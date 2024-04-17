@@ -6,7 +6,5 @@
         xmlns:local="clr-namespace:AirportInformationSystemWPF"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="1000">
-    <Grid>
-
-    </Grid>
+    <Frame Name = "MainFrame" Background="WhiteSmoke" NavigationUIVisibility="Hidden"/>
 </Window>
