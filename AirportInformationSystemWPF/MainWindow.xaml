@@ -6,5 +6,35 @@
         xmlns:local="clr-namespace:AirportInformationSystemWPF"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="1000">
-    <Frame Name = "MainFrame" Background="WhiteSmoke" NavigationUIVisibility="Hidden"/>
+
+
+
+    <Grid Background="WhiteSmoke">
+        <Grid Background="LightGray" Margin="50,50,50,50">
+            <Label Name="LabelTableName" Content="Выберите таблицу" HorizontalAlignment="Center" Margin="0,6,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
+
+        </Grid>
+        <Menu Height="25" VerticalAlignment="Top" FontSize="16">
+            <MenuItem Header="File">
+                <MenuItem Header="New Project" ></MenuItem>
+                <MenuItem Header="Open Project" >
+                    <MenuItem Header="WinForms"></MenuItem>
+                    <MenuItem Header="WPF" ></MenuItem>
+                </MenuItem>
+                <Separator />
+                <MenuItem Header="Exit" ></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Таблицы" >
+                <MenuItem Name="MenuItemCashier" Header="Кассиры" Click="MenuItemCashier_Click"></MenuItem>
+                <MenuItem Name="MenuItemChiefPilot" Header="Главные пилоты" Click="MenuItemChiefPilot_Click"></MenuItem>
+            </MenuItem>
+
+            <MenuItem Header="View" ></MenuItem>
+        </Menu>
+
+        <Frame Name = "MainFrame" Background="WhiteSmoke" NavigationUIVisibility="Hidden" Margin="50,100,50,50">
+
+        </Frame>
+
+    </Grid>
 </Window>

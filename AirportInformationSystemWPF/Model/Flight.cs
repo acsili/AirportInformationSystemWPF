@@ -14,9 +14,9 @@ namespace AirportInformationSystemWPF.Model
         public DateTime DepartureDate { get; set; }
         public DateTime ArrivalDate { get; set; }
         public int AirplaneId { get; set; }
-        public int CheifPilotId { get; set; }
+        public int ChiefPilotId { get; set; }
         public Airplane? Airplane { get; set; }
-        public CheifPilot? CheifPilot { get; set; }
+        public ChiefPilot? CheifPilot { get; set; }
         public List<Ticket> Tickets { get; set; } = new();
     }
 }

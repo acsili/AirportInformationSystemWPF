@@ -16,17 +16,16 @@ using System.Windows.Shapes;
 namespace AirportInformationSystemWPF.View.Forms
 {
     /// <summary>
-    /// Interaction logic for CashierWindow.xaml
+    /// Interaction logic for ChiefPilotWindow.xaml
     /// </summary>
-    public partial class CashierWindow : Window
+    public partial class ChiefPilotWindow : Window
     {
-        public Cashier Cashier { get; private set; }
-        public CashierWindow(Cashier cashier)
+        public ChiefPilot ChiefPilot { get; private set; }
+        public ChiefPilotWindow(ChiefPilot chiefPilot)
         {
             InitializeComponent();
-            Cashier = cashier;
-            DataContext = Cashier;
-
+            ChiefPilot = chiefPilot;
+            DataContext = ChiefPilot;
         }
 
         private void Accept_Click(object sender, RoutedEventArgs e)

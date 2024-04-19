@@ -14,7 +14,7 @@ namespace AirportInformationSystemWPF.DAL
         public DbSet<Airplane> Airplanes { get; set; } = null!;
         public DbSet<AirplaneModel> AirplaneModels { get; set; } = null!;
         public DbSet<Cashier> Cashiers { get; set; } = null!;
-        public DbSet<CheifPilot> CheifPilots { get; set; } = null!;
+        public DbSet<ChiefPilot> ChiefPilots { get; set; } = null!;
         public DbSet<Flight> Flights { get; set; } = null!;
         public DbSet<PassengerPassport> PassengerPassports { get; set; } = null!;
         public DbSet<Ticket> Tickets { get; set; } = null!;

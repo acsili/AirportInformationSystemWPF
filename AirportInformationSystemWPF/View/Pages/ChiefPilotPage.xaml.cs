@@ -1,5 +1,4 @@
-﻿using AirportInformationSystemWPF.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,27 +10,34 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AirportInformationSystemWPF.View.Forms
+namespace AirportInformationSystemWPF.View.Pages
 {
     /// <summary>
-    /// Interaction logic for CashierWindow.xaml
+    /// Interaction logic for ChiefPilotPage.xaml
     /// </summary>
-    public partial class CashierWindow : Window
+    public partial class ChiefPilotPage : Page
     {
-        public Cashier Cashier { get; private set; }
-        public CashierWindow(Cashier cashier)
+        public ChiefPilotPage()
         {
             InitializeComponent();
-            Cashier = cashier;
-            DataContext = Cashier;
+        }
+
+        private void Add_Click(object sender, RoutedEventArgs e)
+        {
 
         }
 
-        private void Accept_Click(object sender, RoutedEventArgs e)
+        private void Edit_Click(object sender, RoutedEventArgs e)
         {
-            DialogResult = true;
+
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

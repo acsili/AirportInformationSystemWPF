@@ -14,7 +14,7 @@ namespace AirportInformationSystemWPF.DAL.Interfaces
         Task<T> GetByName(string name);
         Task Create(T item);
         Task Update(T item);
-        Task Delete(int id);
+        void Delete(int id);
         Task Save();
         Task Load();
         ObservableCollection<T> ToObservableCollection();

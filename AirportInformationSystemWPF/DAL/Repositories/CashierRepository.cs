@@ -22,9 +22,11 @@ namespace AirportInformationSystemWPF.DAL.Repositories
             await _context.Cashiers.AddAsync(item);
         }
 
-        public Task Delete(int id)
+        public void Delete(int id)
         {
-            throw new NotImplementedException();
+            var cashier = _context.Cashiers.Find(id);
+            if (cashier != null)
+                _context.Cashiers.Remove(cashier);
         }
 
         public IEnumerable<Cashier> GetAll()

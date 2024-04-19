@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AirportInformationSystemWPF.Model
 {
-    public class CheifPilot : IEntity
+    public class ChiefPilot : IEntity
     {
         public int Id { get; set; }
         public string? Name { get; set; } = string.Empty; 

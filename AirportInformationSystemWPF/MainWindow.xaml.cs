@@ -22,10 +22,21 @@ namespace AirportInformationSystemWPF
         public MainWindow()
         {
             InitializeComponent();
-            
-            MainFrame.Content = new MenuPage();
 
-            
+            MenuItemCashier.Click += MenuItemCashier_Click;
+            MenuItemChiefPilot.Click += MenuItemChiefPilot_Click;
+        }
+
+        private void MenuItemCashier_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Content = new CashierPage();
+            LabelTableName.Content = "Кассиры";
+        }
+
+        private void MenuItemChiefPilot_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Content = new ChiefPilotPage();
+            LabelTableName.Content = "Главные пилоты";
         }
     }
 }

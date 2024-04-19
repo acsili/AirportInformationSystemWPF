@@ -27,37 +27,20 @@ namespace AirportInformationSystemWPF.View.Pages
     /// </summary>
     public partial class MenuPage : Page
     {
-        ICashierRepository cashierRepository = new CashierRepository();
         public MenuPage()
         {
             InitializeComponent();
 
-            cashierRepository.Load();
-
-            DataContext = cashierRepository.ToObservableCollection();
+            MenuItemCashier.Click += MenuItemCashier_Click;
 
         }
 
-        private void Add_Click(object sender, RoutedEventArgs e)
+        private void MenuItemCashier_Click(object sender, RoutedEventArgs e)
         {
-            CashierWindow CashierWindow = new CashierWindow(new Cashier());
-            if (CashierWindow.ShowDialog() == true)
-            {
-                Cashier Cashier = CashierWindow.Cashier;
-                cashierRepository.Create(Cashier);
-                cashierRepository.Save();
-            }
-
+            CashierPage cashierPage = new CashierPage();
+            //NavigationService.Navigate(new CashierPage());
         }
 
-        private void Edit_Click(object sender, RoutedEventArgs e)
-        {
 
-        }
-
-        private void Delete_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }
