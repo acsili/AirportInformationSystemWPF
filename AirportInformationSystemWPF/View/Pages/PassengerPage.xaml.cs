@@ -1,5 +1,4 @@
 ﻿using AirportInformationSystemWPF.DAL;
-using AirportInformationSystemWPF.DAL.Repositories;
 using AirportInformationSystemWPF.Model;
 using AirportInformationSystemWPF.View.Forms;
 using Microsoft.EntityFrameworkCore;
@@ -21,30 +20,33 @@ using System.Windows.Shapes;
 namespace AirportInformationSystemWPF.View.Pages
 {
     /// <summary>
-    /// Interaction logic for ChiefPilotPage.xaml
+    /// Interaction logic for PassengerPage.xaml
     /// </summary>
-    public partial class ChiefPilotPage : Page
+    public partial class PassengerPage : Page
     {
         ApplicationContext context = new ApplicationContext();
-        public ChiefPilotPage()
+        public PassengerPage()
         {
             InitializeComponent();
 
-            context.ChiefPilots.Load();
-            DataContext = context.ChiefPilots.Local.ToObservableCollection();
+            context.Passengers.Load();
+            DataContext = context.Passengers.Local.ToObservableCollection();
+            
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            ChiefPilotWindow chiefPilotWindow = new ChiefPilotWindow(new ChiefPilot());
-            if (chiefPilotWindow.ShowDialog() == true)
+            PassengerWindow passengerWindow = new PassengerWindow(new Passenger() { PassengerPassport = new PassengerPassport() });
+            if (passengerWindow.ShowDialog() == true)
             {
-                ChiefPilot chiefPilot = chiefPilotWindow.ChiefPilot;
-                context.ChiefPilots.Add(chiefPilot);
+                Passenger passenger = passengerWindow.Passenger;
+                context.PassengerPassports.Add(passenger.PassengerPassport);
+                context.Passengers.Add(passenger);
                 context.SaveChanges();
-                context.ChiefPilots.Load();
-                DataContext = context.ChiefPilots.Local.ToObservableCollection();
+                context.Passengers.Load();
+                DataContext = context.Passengers.Local.ToObservableCollection();
             }
+
         }
 
         private void Edit_Click(object sender, RoutedEventArgs e)

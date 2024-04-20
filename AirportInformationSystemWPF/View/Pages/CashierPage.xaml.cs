@@ -28,18 +28,18 @@ namespace AirportInformationSystemWPF.View.Pages
     {
         ICashierRepository cashierRepository = new CashierRepository();
 
-        ApplicationContext applicationContext = new ApplicationContext();
+        ApplicationContext context = new ApplicationContext();
         public CashierPage()
         {
             InitializeComponent();
 
-            applicationContext.Cashiers.Load();
+            context.Cashiers.Load();
 
             //cashierRepository.Load();
 
             //DataContext = cashierRepository.ToObservableCollection();
 
-            DataContext = applicationContext.Cashiers.Local.ToObservableCollection();
+            DataContext = context.Cashiers.Local.ToObservableCollection();
 
         }
 
@@ -51,8 +51,8 @@ namespace AirportInformationSystemWPF.View.Pages
                 Cashier Cashier = сashierWindow.Cashier;
                 cashierRepository.Create(Cashier);
                 cashierRepository.Save();
-                applicationContext.Cashiers.Load();
-                DataContext = applicationContext.Cashiers.Local.ToObservableCollection();
+                context.Cashiers.Load();
+                DataContext = context.Cashiers.Local.ToObservableCollection();
             }
 
         }
@@ -72,13 +72,13 @@ namespace AirportInformationSystemWPF.View.Pages
 
             if (cashierWindow.ShowDialog() == true)
             {
-                сashier = applicationContext.Cashiers.Find(cashierWindow.Cashier.Id);
+                сashier = context.Cashiers.Find(cashierWindow.Cashier.Id);
                 if (сashier != null)
                 {
                     сashier.Name = cashierWindow.Cashier.Name;
                     сashier.Surname = cashierWindow.Cashier.Surname;
                     
-                    applicationContext.SaveChanges();
+                    context.SaveChanges();
                     CashierList.Items.Refresh();
                 }
             }
@@ -92,8 +92,8 @@ namespace AirportInformationSystemWPF.View.Pages
 
             if (сashier is null) return;
 
-            applicationContext.Cashiers.Remove(сashier);
-            applicationContext.SaveChanges();
+            context.Cashiers.Remove(сashier);
+            context.SaveChanges();
 
             /*cashierRepository.Delete(сashier.Id);
             cashierRepository.Save();*/

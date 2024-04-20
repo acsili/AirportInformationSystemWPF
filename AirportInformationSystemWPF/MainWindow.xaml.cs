@@ -25,6 +25,7 @@ namespace AirportInformationSystemWPF
 
             MenuItemCashier.Click += MenuItemCashier_Click;
             MenuItemChiefPilot.Click += MenuItemChiefPilot_Click;
+            MenuItemPassenger.Click += MenuItemPassenger_Click;
         }
 
         private void MenuItemCashier_Click(object sender, RoutedEventArgs e)
@@ -37,6 +38,12 @@ namespace AirportInformationSystemWPF
         {
             MainFrame.Content = new ChiefPilotPage();
             LabelTableName.Content = "Главные пилоты";
+        }
+
+        private void MenuItemPassenger_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Content = new PassengerPage();
+            LabelTableName.Content = "Пассажиры";
         }
     }
 }
