@@ -1,4 +1,6 @@
 ﻿using AirportInformationSystemWPF.DAL;
+using AirportInformationSystemWPF.DAL.Interfaces;
+using AirportInformationSystemWPF.DAL.Repositories;
 using AirportInformationSystemWPF.Model;
 using AirportInformationSystemWPF.View.Forms;
 using Microsoft.EntityFrameworkCore;
@@ -20,32 +22,31 @@ using System.Windows.Shapes;
 namespace AirportInformationSystemWPF.View.Pages
 {
     /// <summary>
-    /// Interaction logic for PassengerPage.xaml
+    /// Interaction logic for AirplanePage.xaml
     /// </summary>
-    public partial class PassengerPage : Page
+    public partial class AirplanePage : Page
     {
         ApplicationContext context = new ApplicationContext();
-        public PassengerPage()
+        public AirplanePage()
         {
             InitializeComponent();
-
-            DataContext = context.Passengers.Include(x => x.PassengerPassport).ToList();
-
+            //context.Airplanes.Load();
+            //context.Airplanes.Include(x => x.AirplaneModelId);
+            DataContext = context.Airplanes.Include(x => x.AirplaneModel).ToList();
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            PassengerWindow passengerWindow = new PassengerWindow(new Passenger() { PassengerPassport = new PassengerPassport() });
-            if (passengerWindow.ShowDialog() == true)
+            AirplaneWindow airplaneWindow = new AirplaneWindow(new Airplane());
+            if (airplaneWindow.ShowDialog() == true)
             {
-                Passenger passenger = passengerWindow.Passenger;
-                context.PassengerPassports.Add(passenger.PassengerPassport);
-                context.Passengers.Add(passenger);
+                Airplane airplane = airplaneWindow.Airplane;
+                airplane.AirplaneModel = context.AirplaneModels.Find(airplane.AirplaneModelId);
+                context.Airplanes.Add(airplane);
                 context.SaveChanges();
-                context.Passengers.Load();
-                DataContext = context.Passengers.Local.ToObservableCollection();
+                //context.Airplanes.Load();
+                DataContext = context.Airplanes.Include(x => x.AirplaneModel).ToList();
             }
-
         }
 
         private void Edit_Click(object sender, RoutedEventArgs e)

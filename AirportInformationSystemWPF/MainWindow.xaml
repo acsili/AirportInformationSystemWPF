@@ -28,6 +28,8 @@
                 <MenuItem Name="MenuItemCashier" Header="Кассиры" Click="MenuItemCashier_Click"></MenuItem>
                 <MenuItem Name="MenuItemChiefPilot" Header="Главные пилоты" Click="MenuItemChiefPilot_Click"></MenuItem>
                 <MenuItem Name="MenuItemPassenger" Header="Пассажиры" Click="MenuItemPassenger_Click"></MenuItem>
+                <MenuItem Name="MenuItemAirplaneModel" Header="Модели самолетов" Click="MenuItemAirplaneModel_Click"></MenuItem>
+                <MenuItem Name="MenuItemAirplane" Header="Самолеты" Click="MenuItemAirplane_Click"></MenuItem>
             </MenuItem>
 
             <MenuItem Header="View" ></MenuItem>

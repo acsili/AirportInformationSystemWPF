@@ -1,4 +1,5 @@
 ﻿using AirportInformationSystemWPF.DAL;
+using AirportInformationSystemWPF.DAL.Repositories;
 using AirportInformationSystemWPF.Model;
 using AirportInformationSystemWPF.View.Forms;
 using Microsoft.EntityFrameworkCore;
@@ -20,32 +21,29 @@ using System.Windows.Shapes;
 namespace AirportInformationSystemWPF.View.Pages
 {
     /// <summary>
-    /// Interaction logic for PassengerPage.xaml
+    /// Interaction logic for AirplaneModelPage.xaml
     /// </summary>
-    public partial class PassengerPage : Page
+    public partial class AirplaneModelPage : Page
     {
         ApplicationContext context = new ApplicationContext();
-        public PassengerPage()
+        public AirplaneModelPage()
         {
             InitializeComponent();
-
-            DataContext = context.Passengers.Include(x => x.PassengerPassport).ToList();
-
+            context.AirplaneModels.Load();
+            DataContext = context.AirplaneModels.Local.ToObservableCollection();
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            PassengerWindow passengerWindow = new PassengerWindow(new Passenger() { PassengerPassport = new PassengerPassport() });
-            if (passengerWindow.ShowDialog() == true)
+            AirplaneModelWindow airplaneModelWindow = new AirplaneModelWindow(new AirplaneModel());
+            if (airplaneModelWindow.ShowDialog() == true)
             {
-                Passenger passenger = passengerWindow.Passenger;
-                context.PassengerPassports.Add(passenger.PassengerPassport);
-                context.Passengers.Add(passenger);
+                AirplaneModel airplaneModel = airplaneModelWindow.AirplaneModel;
+                context.AirplaneModels.Add(airplaneModel);
                 context.SaveChanges();
-                context.Passengers.Load();
-                DataContext = context.Passengers.Local.ToObservableCollection();
+                context.AirplaneModels.Load();
+                DataContext = context.AirplaneModels.Local.ToObservableCollection();
             }
-
         }
 
         private void Edit_Click(object sender, RoutedEventArgs e)
