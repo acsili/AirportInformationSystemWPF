@@ -1,0 +1,84 @@
+﻿<Window x:Class="AirportInformationSystemWPF.View.Forms.FlightWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AirportInformationSystemWPF.View.Forms"
+        mc:Ignorable="d"
+        Title="FlightWindow" Height="400" Width="400">
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="Margin" Value="8" />
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="8" />
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="MinWidth" Value="60" />
+            <Setter Property="Margin" Value="8" />
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="MinWidth" Value="60" />
+            <Setter Property="Margin" Value="8" />
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Место отправления" />
+        <TextBlock Text="Пункт назначения" Grid.Row="1"/>
+        <TextBlock Text="Дата отправления" Grid.Row="2"/>
+        <TextBlock Text="Дата прибытия" Grid.Row="3"/>
+        <TextBlock Text="Самолет" Grid.Row="4"/>
+        <TextBlock Text="Главный пилот" Grid.Row="5"/>
+
+        <TextBox Text="{Binding DepartureCity}" Grid.Column="1" FontSize="16"/>
+        <TextBox Text="{Binding Destination}" Grid.Column="1" Grid.Row="1" FontSize="16"/>
+        <TextBox Text="{Binding DepartureDate, StringFormat='yyyy-mm-dd hh:mm:ss'}" Grid.Column="1" Grid.Row="2" FontSize="16"/>
+        <TextBox Text="{Binding ArrivalDate, StringFormat='yyyy-mm-dd hh:mm:ss'}" Grid.Column="1" Grid.Row="3" FontSize="16"/>
+        <ComboBox Name="ComboBoxAirplanes" Grid.Column="1" Grid.Row="4" FontSize="16" ItemsSource="{Binding}" SelectionChanged="ComboBoxAirplanes_SelectionChanged">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Id}" Grid.Column="1" FontSize="16"/>
+                        <TextBlock Text="{Binding AirplaneModel.Name}" Grid.Column="1" Grid.Row="1" FontSize="16"/>
+                        <!--<TextBlock Text="{Binding AmountOfSeats}" Grid.Column="1" Grid.Row="2" FontSize="16"/>
+                        <TextBlock Text="{Binding MaximumSpeed}" Grid.Column="1" Grid.Row="3" FontSize="16"/>
+                        <TextBlock Text="{Binding RangeOfFlight}" Grid.Column="1" Grid.Row="4" FontSize="16"/>
+                        <TextBlock Text="{Binding Weight}" Grid.Column="1" Grid.Row="5" FontSize="16"/>-->
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <ComboBox Name="ComboBoxChiefPilots" Grid.Column="1" Grid.Row="5" FontSize="16" ItemsSource="{Binding}" SelectionChanged="ComboBoxChiefPilots_SelectionChanged">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Id}" Grid.Column="1" FontSize="16"/>
+                        <TextBlock Text="{Binding Name}" Grid.Column="1" Grid.Row="1" FontSize="16"/>
+                        <TextBlock Text="{Binding Surname}" Grid.Column="1" Grid.Row="2" FontSize="16"/>
+                        <!--<TextBlock Text="{Binding Age}" Grid.Column="1" Grid.Row="3" FontSize="16"/>
+                        <TextBlock Text="{Binding Experience}" Grid.Column="1" Grid.Row="4" FontSize="16"/>-->
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Row="6" Grid.Column="1">
+            <Button IsDefault="True" Click="Accept_Click" FontSize="16">OK</Button>
+            <Button IsCancel="True" FontSize="16">Отмена</Button>
+        </StackPanel>
+
+    </Grid>
+</Window>

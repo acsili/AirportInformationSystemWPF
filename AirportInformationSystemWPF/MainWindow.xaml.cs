@@ -28,6 +28,7 @@ namespace AirportInformationSystemWPF
             MenuItemPassenger.Click += MenuItemPassenger_Click;
             MenuItemAirplaneModel.Click += MenuItemAirplaneModel_Click;
             MenuItemAirplane.Click += MenuItemAirplane_Click;
+            MenuItemFlight.Click += MenuItemFlight_Click;
         }
 
         private void MenuItemCashier_Click(object sender, RoutedEventArgs e)
@@ -58,6 +59,12 @@ namespace AirportInformationSystemWPF
         {
             MainFrame.Content = new AirplanePage();
             LabelTableName.Content = "Самолеты";
+        }
+
+        private void MenuItemFlight_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Content = new FlightPage();
+            LabelTableName.Content = "Рейсы";
         }
     }
 }

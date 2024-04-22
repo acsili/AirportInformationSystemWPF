@@ -59,7 +59,7 @@ namespace AirportInformationSystemWPF.View.Pages
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
-            Cashier? сashier = CashierList.SelectedItem as Cashier;
+            Cashier? сashier = ListBoxView.SelectedItem as Cashier;
 
             if (сashier is null) return;
 
@@ -79,7 +79,7 @@ namespace AirportInformationSystemWPF.View.Pages
                     сashier.Surname = cashierWindow.Cashier.Surname;
                     
                     context.SaveChanges();
-                    CashierList.Items.Refresh();
+                    ListBoxView.Items.Refresh();
                 }
             }
 
@@ -88,7 +88,7 @@ namespace AirportInformationSystemWPF.View.Pages
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
 
-            Cashier? сashier = CashierList.SelectedItem as Cashier;
+            Cashier? сashier = ListBoxView.SelectedItem as Cashier;
 
             if (сashier is null) return;
 

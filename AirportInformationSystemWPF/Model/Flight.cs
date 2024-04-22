@@ -10,6 +10,7 @@ namespace AirportInformationSystemWPF.Model
     public class Flight : IEntity
     {
         public int Id { get; set; }
+        public string? DepartureCity { get; set; } = string.Empty;
         public string? Destination { get; set; } = string.Empty;
         public DateTime DepartureDate { get; set; }
         public DateTime ArrivalDate { get; set; }

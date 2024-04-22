@@ -13,7 +13,7 @@
             <RowDefinition />
             <RowDefinition Height="50" />
         </Grid.RowDefinitions>
-        <ListBox x:Name="CashierList" ItemsSource="{Binding}">
+        <ListBox x:Name="ListBoxView" ItemsSource="{Binding}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
