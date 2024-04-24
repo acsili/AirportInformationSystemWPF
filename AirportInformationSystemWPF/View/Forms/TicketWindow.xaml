@@ -14,7 +14,7 @@
             <Setter Property="Margin" Value="8" />
         </Style>
         <Style TargetType="Button">
-            <Setter Property="MinWidth" Value="60" />
+            <Setter Property="MinWidth" Value="100" />
             <Setter Property="Margin" Value="8" />
         </Style>
         <Style TargetType="ComboBox">
@@ -22,7 +22,7 @@
             <Setter Property="Margin" Value="8" />
         </Style>
     </Window.Resources>
-    <Grid>
+    <Grid Background="LightSteelBlue">
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition />
@@ -31,17 +31,17 @@
             <RowDefinition />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="130" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <TextBlock Text="Цена" />
-        <TextBlock Text="Номер места" Grid.Row="1"/>
-        <TextBlock Text="Рейс" Grid.Row="2"/>
-        <TextBlock Text="Кассир" Grid.Row="3"/>
+        <TextBlock Text="Цена" FontSize="16"/>
+        <TextBlock Text="Номер места" Grid.Row="1" FontSize="16"/>
+        <TextBlock Text="Рейс" Grid.Row="2" FontSize="16"/>
+        <TextBlock Text="Кассир" Grid.Row="3" FontSize="16"/>
 
         <TextBox Text="{Binding Price}" Grid.Column="1" FontSize="16"/>
         <TextBox Text="{Binding SeatNumber}" Grid.Column="1" Grid.Row="1" FontSize="16"/>
-        <ComboBox Name="ComboBoxFlights" Grid.Column="1" Grid.Row="2" FontSize="16" ItemsSource="{Binding}">
+        <ComboBox Name="ComboBoxFlights" Grid.Column="1" Grid.Row="2" FontSize="16" ItemsSource="{Binding}" SelectionChanged="ComboBoxFlights_SelectionChanged">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
@@ -52,7 +52,7 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        <ComboBox Name="ComboBoxCashiers" Grid.Column="1" Grid.Row="3" FontSize="16" ItemsSource="{Binding}" >
+        <ComboBox Name="ComboBoxCashiers" Grid.Column="1" Grid.Row="3" FontSize="16" ItemsSource="{Binding}" SelectionChanged="ComboBoxCashiers_SelectionChanged" >
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
@@ -66,7 +66,6 @@
 
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Row="6" Grid.Column="1">
             <Button IsDefault="True" Click="Accept_Click" FontSize="16">OK</Button>
-            <Button IsCancel="True" FontSize="16">Отмена</Button>
         </StackPanel>
 
     </Grid>

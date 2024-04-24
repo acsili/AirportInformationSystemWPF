@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AirportInformationSystemWPF.View.Forms"
         mc:Ignorable="d"
-        Title="PassengerWindow" Height="400" Width="400">
+        Title="PassengerWindow" Height="400" Width="450">
     <Window.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="Margin" Value="8" />
@@ -14,11 +14,11 @@
             <Setter Property="Margin" Value="8" />
         </Style>
         <Style TargetType="Button">
-            <Setter Property="MinWidth" Value="60" />
+            <Setter Property="MinWidth" Value="100" />
             <Setter Property="Margin" Value="8" />
         </Style>
     </Window.Resources>
-    <Grid>
+    <Grid Background="LightSteelBlue">
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition />
@@ -28,14 +28,14 @@
             <RowDefinition />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="120" />
+            <ColumnDefinition Width="150" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <TextBlock Text="Имя" />
-        <TextBlock Text="Фимилия" Grid.Row="1" />
-        <TextBlock Text="Серия паспорта" Grid.Row="2" />
-        <TextBlock Text="Номер паспорта" Grid.Row="3" />
-        <TextBlock Text="Возраст" Grid.Row="4" />
+        <TextBlock Text="Имя" FontSize="16"/>
+        <TextBlock Text="Фимилия" Grid.Row="1" FontSize="16"/>
+        <TextBlock Text="Серия паспорта" Grid.Row="2" FontSize="16"/>
+        <TextBlock Text="Номер паспорта" Grid.Row="3" FontSize="16"/>
+        <TextBlock Text="Возраст" Grid.Row="4" FontSize="16"/>
 
         <TextBox Text="{Binding Name}" Grid.Column="1" FontSize="16"/>
         <TextBox Text="{Binding Surname}" Grid.Column="1" Grid.Row="1" FontSize="16"/>
@@ -45,7 +45,6 @@
 
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Row="5" Grid.Column="1">
             <Button IsDefault="True" Click="Accept_Click" FontSize="16">OK</Button>
-            <Button IsCancel="True" FontSize="16">Отмена</Button>
         </StackPanel>
 
     </Grid>

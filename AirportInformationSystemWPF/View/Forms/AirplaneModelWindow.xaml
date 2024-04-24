@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AirportInformationSystemWPF.View.Forms"
         mc:Ignorable="d"
-        Title="AirplaneModelWindow" Height="500" Width="400">
+        Title="AirplaneModelWindow" Height="500" Width="500">
     <Window.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="Margin" Value="8" />
@@ -14,11 +14,11 @@
             <Setter Property="Margin" Value="8" />
         </Style>
         <Style TargetType="Button">
-            <Setter Property="MinWidth" Value="60" />
+            <Setter Property="MinWidth" Value="100" />
             <Setter Property="Margin" Value="8" />
         </Style>
     </Window.Resources>
-    <Grid>
+    <Grid Background="LightSTeelBlue">
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition />
@@ -28,14 +28,14 @@
             <RowDefinition />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="150" />
+            <ColumnDefinition Width="200" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <TextBlock Text="Название" />
-        <TextBlock Text="Количество мест" Grid.Row="1" />
-        <TextBlock Text="Максимальная скорость" Grid.Row="2" />
-        <TextBlock Text="Дальность полета" Grid.Row="3" />
-        <TextBlock Text="Масса" Grid.Row="4" />
+        <TextBlock Text="Название" FontSize="16"/>
+        <TextBlock Text="Количество мест" Grid.Row="1" FontSize="16"/>
+        <TextBlock Text="Максимальная скорость" Grid.Row="2" FontSize="16"/>
+        <TextBlock Text="Дальность полета" Grid.Row="3" FontSize="16"/>
+        <TextBlock Text="Масса" Grid.Row="4" FontSize="16"/>
 
         <TextBox Text="{Binding Name}" Grid.Column="1" FontSize="16"/>
         <TextBox Text="{Binding AmountOfSeats}" Grid.Column="1" Grid.Row="1" FontSize="16"/>
@@ -45,7 +45,6 @@
 
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Row="5" Grid.Column="1">
             <Button IsDefault="True" Click="Accept_Click" FontSize="16">OK</Button>
-            <Button IsCancel="True" FontSize="16">Отмена</Button>
         </StackPanel>
 
     </Grid>

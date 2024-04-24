@@ -39,7 +39,7 @@ namespace AirportInformationSystemWPF.View.Pages
                 Flight flight = flightWindow.Flight;
                 context.Flights.Add(flight);
                 context.SaveChanges();
-                ListBoxView.Items.Refresh();
+                DataContext = context.Flights.Include(x => x.Airplane).Include(x => x.CheifPilot).ToList();
             }
         }
 

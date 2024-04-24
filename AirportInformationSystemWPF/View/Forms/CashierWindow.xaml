@@ -14,11 +14,11 @@
             <Setter Property="Margin" Value="8" />
         </Style>
         <Style TargetType="Button">
-            <Setter Property="MinWidth" Value="60" />
+            <Setter Property="MinWidth" Value="100" />
             <Setter Property="Margin" Value="8" />
         </Style>
     </Window.Resources>
-    <Grid>
+    <Grid Background="LightSteelBlue">
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition />
@@ -36,7 +36,6 @@
 
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Row="3" Grid.Column="1">
             <Button IsDefault="True" Click="Accept_Click" FontSize="16">OK</Button>
-            <Button IsCancel="True" FontSize="16">Отмена</Button>
         </StackPanel>
 
     </Grid>

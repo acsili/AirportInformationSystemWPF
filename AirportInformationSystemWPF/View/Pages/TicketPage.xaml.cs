@@ -1,6 +1,4 @@
 ﻿using AirportInformationSystemWPF.DAL;
-using AirportInformationSystemWPF.DAL.Interfaces;
-using AirportInformationSystemWPF.DAL.Repositories;
 using AirportInformationSystemWPF.Model;
 using AirportInformationSystemWPF.View.Forms;
 using Microsoft.EntityFrameworkCore;
@@ -22,29 +20,26 @@ using System.Windows.Shapes;
 namespace AirportInformationSystemWPF.View.Pages
 {
     /// <summary>
-    /// Interaction logic for AirplanePage.xaml
+    /// Interaction logic for TicketPage.xaml
     /// </summary>
-    public partial class AirplanePage : Page
+    public partial class TicketPage : Page
     {
         ApplicationContext context = new ApplicationContext();
-        public AirplanePage()
+        public TicketPage()
         {
             InitializeComponent();
-            //context.Airplanes.Load();
-            //context.Airplanes.Include(x => x.AirplaneModelId);
-            DataContext = context.Airplanes.Include(x => x.AirplaneModel).ToList();
+            DataContext = context.Tickets.Include(x => x.Cashier).Include(x => x.Flight).ToList();
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            AirplaneWindow airplaneWindow = new AirplaneWindow(new Airplane());
-            if (airplaneWindow.ShowDialog() == true)
+            TicketWindow ticketWindow = new TicketWindow(new Ticket());
+            if (ticketWindow.ShowDialog() == true) 
             {
-                Airplane airplane = airplaneWindow.Airplane;
-                airplane.AirplaneModel = context.AirplaneModels.Find(airplane.AirplaneModelId);
-                context.Airplanes.Add(airplane);
+                Ticket ticket = ticketWindow.Ticket;
+                context.Tickets.Add(ticket);
                 context.SaveChanges();
-                DataContext = context.Airplanes.Include(x => x.AirplaneModel).ToList();
+                DataContext = context.Tickets.Include(x => x.Cashier).Include(x => x.Flight).ToList();
             }
         }
 

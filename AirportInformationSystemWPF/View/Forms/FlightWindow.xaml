@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AirportInformationSystemWPF.View.Forms"
         mc:Ignorable="d"
-        Title="FlightWindow" Height="400" Width="400">
+        Title="FlightWindow" Height="450" Width="450">
     <Window.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="Margin" Value="8" />
@@ -14,7 +14,7 @@
             <Setter Property="Margin" Value="8" />
         </Style>
         <Style TargetType="Button">
-            <Setter Property="MinWidth" Value="60" />
+            <Setter Property="MinWidth" Value="100" />
             <Setter Property="Margin" Value="8" />
         </Style>
         <Style TargetType="ComboBox">
@@ -22,7 +22,7 @@
             <Setter Property="Margin" Value="8" />
         </Style>
     </Window.Resources>
-    <Grid>
+    <Grid Background="LightSteelBlue">
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition />
@@ -33,15 +33,15 @@
             <RowDefinition />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="150" />
+            <ColumnDefinition Width="160" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <TextBlock Text="Место отправления" />
-        <TextBlock Text="Пункт назначения" Grid.Row="1"/>
-        <TextBlock Text="Дата отправления" Grid.Row="2"/>
-        <TextBlock Text="Дата прибытия" Grid.Row="3"/>
-        <TextBlock Text="Самолет" Grid.Row="4"/>
-        <TextBlock Text="Главный пилот" Grid.Row="5"/>
+        <TextBlock Text="Место отправления" FontSize="16"/>
+        <TextBlock Text="Пункт назначения" Grid.Row="1" FontSize="16"/>
+        <TextBlock Text="Дата отправления" Grid.Row="2" FontSize="16"/>
+        <TextBlock Text="Дата прибытия" Grid.Row="3" FontSize="16"/>
+        <TextBlock Text="Самолет" Grid.Row="4" FontSize="16"/>
+        <TextBlock Text="Главный пилот" Grid.Row="5" FontSize="16"/>
 
         <TextBox Text="{Binding DepartureCity}" Grid.Column="1" FontSize="16"/>
         <TextBox Text="{Binding Destination}" Grid.Column="1" Grid.Row="1" FontSize="16"/>
@@ -77,7 +77,6 @@
 
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Row="6" Grid.Column="1">
             <Button IsDefault="True" Click="Accept_Click" FontSize="16">OK</Button>
-            <Button IsCancel="True" FontSize="16">Отмена</Button>
         </StackPanel>
 
     </Grid>
