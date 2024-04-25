@@ -1,43 +1,47 @@
 ﻿using AirportInformationSystemWPF.DAL.Interfaces;
 using AirportInformationSystemWPF.Model;
-using AirportInformationSystemWPF.View.Forms;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace AirportInformationSystemWPF.DAL.Repositories
 {
-    internal class CashierRepository : ICashierRepository
+    internal class AirplaneRepository : IAirplaneRepository
     {
-        private ApplicationContext _context;
-        public CashierRepository() 
+        ApplicationContext _context;
+
+        public AirplaneRepository()
         {
             _context = new ApplicationContext();
         }
-        public void Create(Cashier item)
+
+        public void Create(Airplane item)
         {
-            _context.Cashiers.Add(item);
+            _context.Airplanes.Add(item);
+
         }
 
         public void Delete(int id)
         {
-            var cashier = _context.Cashiers.Find(id);
-            if (cashier != null)
-                _context.Cashiers.Remove(cashier);
+            var airplane = _context.Airplanes.Find(id);
+            if (airplane != null) 
+            {
+                _context.Airplanes.Remove(airplane);
+            }
         }
 
-        public List<Cashier> GetAll()
+        public List<Airplane> GetAll()
         {
-            return _context.Cashiers.ToList();
+            return _context.Airplanes.Include(x => x.AirplaneModel).ToList();
         }
 
-        public Cashier GetById(int id)
+        public Airplane GetById(int id)
         {
-            return _context.Cashiers.Find(id);
+            return _context.Airplanes.Find(id);
         }
 
         public void Save()
@@ -45,7 +49,7 @@ namespace AirportInformationSystemWPF.DAL.Repositories
             _context.SaveChanges();
         }
 
-        public void Update(Cashier item)
+        public void Update(Airplane item)
         {
             throw new NotImplementedException();
         }

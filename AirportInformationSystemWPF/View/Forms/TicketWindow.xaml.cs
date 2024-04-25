@@ -1,4 +1,6 @@
 ﻿using AirportInformationSystemWPF.DAL;
+using AirportInformationSystemWPF.DAL.Interfaces;
+using AirportInformationSystemWPF.DAL.Repositories;
 using AirportInformationSystemWPF.Model;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -22,15 +24,16 @@ namespace AirportInformationSystemWPF.View.Forms
     /// </summary>
     public partial class TicketWindow : Window
     {
-        ApplicationContext context = new ApplicationContext();
+        IFlightRepository flightRepository = new FlightRepository();
+        ICashierRepository cashierRepository = new CashierRepository();
         public Ticket Ticket { get; set; }
         public TicketWindow(Ticket ticket)
         {
             InitializeComponent();
             Ticket = ticket;
             DataContext = Ticket;
-            ComboBoxFlights.DataContext = context.Flights.Include(x => x.Airplane).Include(x => x.CheifPilot).ToList();
-            ComboBoxCashiers.DataContext = context.Cashiers.ToList();
+            ComboBoxFlights.DataContext = flightRepository.GetAll();
+            ComboBoxCashiers.DataContext = cashierRepository.GetAll();
         }
 
         private void Accept_Click(object sender, RoutedEventArgs e)

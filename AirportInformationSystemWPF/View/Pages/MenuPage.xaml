@@ -8,6 +8,14 @@
       d:DesignHeight="600" d:DesignWidth="1000"
       Title="MenuPage">
 
+    <Page.Resources>
+        <Style TargetType="Button">
+            <Setter Property="MinWidth" Value="150" />
+            <Setter Property="Margin" Value="8" />
+            <Setter Property="Background" Value="LightSteelBlue" />
+        </Style>
+    </Page.Resources>
+
     <Grid Background="WhiteSmoke">
         <Grid Background="LightGray" Margin="50,50,50,50">
 

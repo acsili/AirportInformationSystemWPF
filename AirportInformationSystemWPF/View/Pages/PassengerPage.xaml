@@ -8,6 +8,14 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="PassengerPage">
 
+    <Page.Resources>
+        <Style TargetType="Button">
+            <Setter Property="MinWidth" Value="150" />
+            <Setter Property="Margin" Value="8" />
+            <Setter Property="Background" Value="LightSteelBlue" />
+        </Style>
+    </Page.Resources>
+
     <Grid Background="LightGray">
         <Grid.RowDefinitions>
             <RowDefinition />

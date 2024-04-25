@@ -10,7 +10,7 @@
 
     <Page.Resources>
         <Style TargetType="Button">
-            <Setter Property="MinWidth" Value="120" />
+            <Setter Property="MinWidth" Value="150" />
             <Setter Property="Margin" Value="8" />
             <Setter Property="Background" Value="LightSteelBlue" />
         </Style>

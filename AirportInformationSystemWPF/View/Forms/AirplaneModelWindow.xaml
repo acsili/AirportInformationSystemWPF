@@ -16,6 +16,7 @@
         <Style TargetType="Button">
             <Setter Property="MinWidth" Value="100" />
             <Setter Property="Margin" Value="8" />
+            <Setter Property="Background" Value="WhiteSmoke" />
         </Style>
     </Window.Resources>
     <Grid Background="LightSTeelBlue">

@@ -17,7 +17,7 @@ namespace AirportInformationSystemWPF.Model
         public int AirplaneId { get; set; }
         public int ChiefPilotId { get; set; }
         public Airplane? Airplane { get; set; }
-        public ChiefPilot? CheifPilot { get; set; }
+        public ChiefPilot? ChiefPilot { get; set; }
         public List<Ticket> Tickets { get; set; } = new();
     }
 }

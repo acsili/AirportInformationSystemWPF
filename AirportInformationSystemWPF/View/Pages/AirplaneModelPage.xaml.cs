@@ -1,4 +1,5 @@
 ﻿using AirportInformationSystemWPF.DAL;
+using AirportInformationSystemWPF.DAL.Interfaces;
 using AirportInformationSystemWPF.DAL.Repositories;
 using AirportInformationSystemWPF.Model;
 using AirportInformationSystemWPF.View.Forms;
@@ -25,12 +26,11 @@ namespace AirportInformationSystemWPF.View.Pages
     /// </summary>
     public partial class AirplaneModelPage : Page
     {
-        ApplicationContext context = new ApplicationContext();
+        IAirplaneModelRepository airplaneModelRepository = new AirplaneModelRepository();
         public AirplaneModelPage()
         {
             InitializeComponent();
-            context.AirplaneModels.Load();
-            DataContext = context.AirplaneModels.Local.ToObservableCollection();
+            DataContext = airplaneModelRepository.GetAll();
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
@@ -39,21 +39,56 @@ namespace AirportInformationSystemWPF.View.Pages
             if (airplaneModelWindow.ShowDialog() == true)
             {
                 AirplaneModel airplaneModel = airplaneModelWindow.AirplaneModel;
-                context.AirplaneModels.Add(airplaneModel);
-                context.SaveChanges();
-                context.AirplaneModels.Load();
-                DataContext = context.AirplaneModels.Local.ToObservableCollection();
+                airplaneModelRepository.Create(airplaneModel);
+                airplaneModelRepository.Save();
+                DataContext = airplaneModelRepository.GetAll();
             }
         }
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
+            AirplaneModel? airplaneModel = ListBoxView.SelectedItem as AirplaneModel;
 
+            if (airplaneModel is null) return;
+
+            AirplaneModelWindow airplaneModelWindow = new AirplaneModelWindow(new AirplaneModel()
+            {
+                Id = airplaneModel.Id,
+                Name = airplaneModel.Name,
+                AmountOfSeats = airplaneModel.AmountOfSeats,
+                MaximumSpeed = airplaneModel.MaximumSpeed,
+                RangeOfFlight = airplaneModel.RangeOfFlight,
+                Weight = airplaneModel.Weight,
+            });
+
+            if (airplaneModelWindow.ShowDialog() == true)
+            {
+                airplaneModel = airplaneModelRepository.GetById(airplaneModelWindow.AirplaneModel.Id);
+                if (airplaneModel != null)
+                {
+                    airplaneModel.Weight = airplaneModelWindow.AirplaneModel.Weight;
+                    airplaneModel.RangeOfFlight = airplaneModelWindow.AirplaneModel.RangeOfFlight;
+                    airplaneModel.MaximumSpeed = airplaneModelWindow.AirplaneModel.MaximumSpeed;
+                    airplaneModel.Name = airplaneModelWindow.AirplaneModel.Name;
+                    airplaneModel.AmountOfSeats = airplaneModelWindow.AirplaneModel.AmountOfSeats;
+                }
+
+                airplaneModelRepository.Save();
+
+                ListBoxView.Items.Refresh();
+            }
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
+            AirplaneModel? airplaneModel = ListBoxView.SelectedItem as AirplaneModel;
 
+            if (airplaneModel is null) return;
+
+            airplaneModelRepository.Delete(airplaneModel.Id);
+            airplaneModelRepository.Save();
+
+            DataContext = airplaneModelRepository.GetAll();
         }
     }
 }

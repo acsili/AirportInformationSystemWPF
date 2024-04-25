@@ -26,13 +26,11 @@ namespace AirportInformationSystemWPF.View.Pages
     /// </summary>
     public partial class AirplanePage : Page
     {
-        ApplicationContext context = new ApplicationContext();
+        IAirplaneRepository airplaneRepository = new AirplaneRepository();
         public AirplanePage()
         {
             InitializeComponent();
-            //context.Airplanes.Load();
-            //context.Airplanes.Include(x => x.AirplaneModelId);
-            DataContext = context.Airplanes.Include(x => x.AirplaneModel).ToList();
+            DataContext = airplaneRepository.GetAll();
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
@@ -41,20 +39,51 @@ namespace AirportInformationSystemWPF.View.Pages
             if (airplaneWindow.ShowDialog() == true)
             {
                 Airplane airplane = airplaneWindow.Airplane;
-                airplane.AirplaneModel = context.AirplaneModels.Find(airplane.AirplaneModelId);
-                context.Airplanes.Add(airplane);
-                context.SaveChanges();
-                DataContext = context.Airplanes.Include(x => x.AirplaneModel).ToList();
+                airplaneRepository.Create(airplane);
+                airplaneRepository.Save();
+                DataContext = airplaneRepository.GetAll();
             }
+
+
         }
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
+            Airplane? airplane = ListBoxView.SelectedItem as Airplane;
 
+            if (airplane is null) return;
+
+            AirplaneWindow airplaneWindow = new AirplaneWindow(new Airplane()
+            {
+                Id = airplane.Id,
+                AirplaneModelId = airplane.Id,
+            });
+
+            if (airplaneWindow.ShowDialog() == true)
+            {
+                airplane = airplaneRepository.GetById(airplaneWindow.Airplane.Id);
+                if (airplane != null)
+                {
+                    airplane.Id = airplaneWindow.Airplane.Id;
+                    airplane.AirplaneModelId = airplaneWindow.Airplane.Id;
+
+                    airplaneRepository.Save();
+
+                    ListBoxView.Items.Refresh();
+                }
+            }
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
+            Airplane? airplane = ListBoxView.SelectedItem as Airplane;
+
+            if (airplane is null) return;
+
+            airplaneRepository.Delete(airplane.Id);
+            airplaneRepository.Save();
+
+            DataContext = airplaneRepository.GetAll();
 
         }
     }

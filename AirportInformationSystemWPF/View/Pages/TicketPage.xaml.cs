@@ -1,4 +1,6 @@
 ﻿using AirportInformationSystemWPF.DAL;
+using AirportInformationSystemWPF.DAL.Interfaces;
+using AirportInformationSystemWPF.DAL.Repositories;
 using AirportInformationSystemWPF.Model;
 using AirportInformationSystemWPF.View.Forms;
 using Microsoft.EntityFrameworkCore;
@@ -24,11 +26,11 @@ namespace AirportInformationSystemWPF.View.Pages
     /// </summary>
     public partial class TicketPage : Page
     {
-        ApplicationContext context = new ApplicationContext();
+        ITicketRepository ticketRepository = new TicketRepository();
         public TicketPage()
         {
             InitializeComponent();
-            DataContext = context.Tickets.Include(x => x.Cashier).Include(x => x.Flight).ToList();
+            DataContext = ticketRepository.GetAll();
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
@@ -37,20 +39,55 @@ namespace AirportInformationSystemWPF.View.Pages
             if (ticketWindow.ShowDialog() == true) 
             {
                 Ticket ticket = ticketWindow.Ticket;
-                context.Tickets.Add(ticket);
-                context.SaveChanges();
-                DataContext = context.Tickets.Include(x => x.Cashier).Include(x => x.Flight).ToList();
+                ticketRepository.Create(ticket);
+                ticketRepository.Save();
+                DataContext = ticketRepository.GetAll();
             }
         }
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
+            Ticket? ticket = ListBoxView.SelectedItem as Ticket;
+
+            if (ticket is null) return;
+
+            TicketWindow ticketWindow = new TicketWindow(new Ticket
+            {
+                Id = ticket.Id,
+                Price = ticket.Price,
+                SeatNumber = ticket.SeatNumber,
+                CashierId = ticket.CashierId,
+                FlightId = ticket.FlightId,
+            });
+
+            if (ticketWindow.ShowDialog() == true)
+            {
+                ticket = ticketRepository.GetById(ticketWindow.Ticket.Id);
+                if (ticket != null)
+                {
+                    ticket.Price = ticketWindow.Ticket.Price;
+                    ticket.SeatNumber = ticketWindow.Ticket.SeatNumber;
+                    ticket.CashierId = ticketWindow.Ticket.CashierId;
+                    ticket.FlightId = ticketWindow.Ticket.FlightId;
+
+                    ticketRepository.Save();
+
+                    ListBoxView.Items.Refresh();
+                }
+            }
 
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
+            Ticket? ticket = ListBoxView.SelectedItem as Ticket;
 
+            if (ticket is null) return;
+
+            ticketRepository.Delete(ticket.Id);
+            ticketRepository.Save();
+
+            DataContext = ticketRepository.GetAll();
         }
     }
 }
