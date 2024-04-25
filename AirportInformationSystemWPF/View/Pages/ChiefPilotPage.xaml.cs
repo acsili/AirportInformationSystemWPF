@@ -1,4 +1,5 @@
 ﻿using AirportInformationSystemWPF.DAL;
+using AirportInformationSystemWPF.DAL.Interfaces;
 using AirportInformationSystemWPF.DAL.Repositories;
 using AirportInformationSystemWPF.Model;
 using AirportInformationSystemWPF.View.Forms;
@@ -25,13 +26,12 @@ namespace AirportInformationSystemWPF.View.Pages
     /// </summary>
     public partial class ChiefPilotPage : Page
     {
-        ApplicationContext context = new ApplicationContext();
+        IChiefPilotRepository chiefPilotRepository = new ChiefPilotRepository();
         public ChiefPilotPage()
         {
             InitializeComponent();
 
-            context.ChiefPilots.Load();
-            DataContext = context.ChiefPilots.Local.ToObservableCollection();
+            DataContext = chiefPilotRepository.GetAll();
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
@@ -40,21 +40,55 @@ namespace AirportInformationSystemWPF.View.Pages
             if (chiefPilotWindow.ShowDialog() == true)
             {
                 ChiefPilot chiefPilot = chiefPilotWindow.ChiefPilot;
-                context.ChiefPilots.Add(chiefPilot);
-                context.SaveChanges();
-                context.ChiefPilots.Load();
-                DataContext = context.ChiefPilots.Local.ToObservableCollection();
+                chiefPilotRepository.Create(chiefPilot);
+                chiefPilotRepository.Save();
+                DataContext = chiefPilotRepository.GetAll();
             }
         }
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
+            ChiefPilot? chiefPilot = ListBoxView.SelectedItem as ChiefPilot;
+            if (chiefPilot is null) return;
+
+            ChiefPilotWindow chiefPilotWindow = new ChiefPilotWindow(new ChiefPilot()
+            {
+                Id = chiefPilot.Id,
+                Name = chiefPilot.Name,
+                Surname = chiefPilot.Surname,
+                Age = chiefPilot.Age,
+                Experience = chiefPilot.Experience,
+            });
+
+            if (chiefPilotWindow.ShowDialog() == true)
+            {
+                chiefPilot = chiefPilotRepository.GetById(chiefPilotWindow.ChiefPilot.Id);
+                
+                if (chiefPilot != null)
+                {
+                    chiefPilot.Surname = chiefPilotWindow.ChiefPilot.Surname;
+                    chiefPilot.Name = chiefPilotWindow.ChiefPilot.Name;
+                    chiefPilot.Experience = chiefPilotWindow.ChiefPilot.Experience;
+                    chiefPilot.Age = chiefPilotWindow.ChiefPilot.Age;
+                }
+
+                chiefPilotRepository.Save();
+
+                ListBoxView.Items.Refresh();
+            }
 
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
+            ChiefPilot? chiefPilot = ListBoxView.SelectedItem as ChiefPilot;
 
+            if (chiefPilot is null) return;
+
+            chiefPilotRepository.Delete(chiefPilot.Id);
+            chiefPilotRepository.Save();
+
+            DataContext = chiefPilotRepository.GetAll();
         }
     }
 }

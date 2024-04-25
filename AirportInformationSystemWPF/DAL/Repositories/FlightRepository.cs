@@ -1,43 +1,42 @@
 ﻿using AirportInformationSystemWPF.DAL.Interfaces;
 using AirportInformationSystemWPF.Model;
-using AirportInformationSystemWPF.View.Forms;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace AirportInformationSystemWPF.DAL.Repositories
 {
-    internal class CashierRepository : ICashierRepository
+    internal class FlightRepository : IFlightRepository
     {
-        private ApplicationContext _context;
-        public CashierRepository() 
+        ApplicationContext _context;
+
+        public FlightRepository()
         {
             _context = new ApplicationContext();
         }
-        public void Create(Cashier item)
+        public void Create(Flight item)
         {
-            _context.Cashiers.Add(item);
+            _context.Flights.Add(item);
         }
 
         public void Delete(int id)
         {
-            var cashier = _context.Cashiers.Find(id);
-            if (cashier != null)
-                _context.Cashiers.Remove(cashier);
+            var flight = _context.Flights.Find(id);
+            if (flight != null)
+                _context.Flights.Remove(flight);
         }
 
-        public List<Cashier> GetAll()
+        public List<Flight> GetAll()
         {
-            return _context.Cashiers.ToList();
+            return _context.Flights.Include(x => x.Airplane).Include(x => x.ChiefPilot).ToList();
         }
 
-        public Cashier GetById(int id)
+        public Flight GetById(int id)
         {
-            return _context.Cashiers.Find(id);
+            return _context.Flights.Find(id);
         }
 
         public void Save()
@@ -45,7 +44,7 @@ namespace AirportInformationSystemWPF.DAL.Repositories
             _context.SaveChanges();
         }
 
-        public void Update(Cashier item)
+        public void Update(Flight item)
         {
             throw new NotImplementedException();
         }

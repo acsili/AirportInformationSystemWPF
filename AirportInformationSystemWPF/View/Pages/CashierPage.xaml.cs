@@ -27,19 +27,12 @@ namespace AirportInformationSystemWPF.View.Pages
     public partial class CashierPage : Page
     {
         ICashierRepository cashierRepository = new CashierRepository();
-
-        ApplicationContext context = new ApplicationContext();
         public CashierPage()
         {
             InitializeComponent();
 
-            context.Cashiers.Load();
+            DataContext = cashierRepository.GetAll();
 
-            //cashierRepository.Load();
-
-            //DataContext = cashierRepository.ToObservableCollection();
-
-            DataContext = context.Cashiers.Local.ToObservableCollection();
 
         }
 
@@ -51,8 +44,7 @@ namespace AirportInformationSystemWPF.View.Pages
                 Cashier Cashier = сashierWindow.Cashier;
                 cashierRepository.Create(Cashier);
                 cashierRepository.Save();
-                context.Cashiers.Load();
-                DataContext = context.Cashiers.Local.ToObservableCollection();
+                DataContext = cashierRepository.GetAll();
             }
 
         }
@@ -72,13 +64,14 @@ namespace AirportInformationSystemWPF.View.Pages
 
             if (cashierWindow.ShowDialog() == true)
             {
-                сashier = context.Cashiers.Find(cashierWindow.Cashier.Id);
+                сashier = cashierRepository.GetById(cashierWindow.Cashier.Id);
                 if (сashier != null)
                 {
                     сashier.Name = cashierWindow.Cashier.Name;
                     сashier.Surname = cashierWindow.Cashier.Surname;
-                    
-                    context.SaveChanges();
+
+                    cashierRepository.Save();
+
                     ListBoxView.Items.Refresh();
                 }
             }
@@ -92,11 +85,11 @@ namespace AirportInformationSystemWPF.View.Pages
 
             if (сashier is null) return;
 
-            context.Cashiers.Remove(сashier);
-            context.SaveChanges();
+            cashierRepository.Delete(сashier.Id);
+            cashierRepository.Save();
 
-            /*cashierRepository.Delete(сashier.Id);
-            cashierRepository.Save();*/
+            DataContext = cashierRepository.GetAll();
+
         }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using AirportInformationSystemWPF.DAL;
+using AirportInformationSystemWPF.DAL.Interfaces;
+using AirportInformationSystemWPF.DAL.Repositories;
 using AirportInformationSystemWPF.Model;
 using AirportInformationSystemWPF.View.Forms;
 using Microsoft.EntityFrameworkCore;
@@ -24,11 +26,11 @@ namespace AirportInformationSystemWPF.View.Pages
     /// </summary>
     public partial class FlightPage : Page
     {
-        ApplicationContext context = new ApplicationContext();
+        IFlightRepository flightRepository = new FlightRepository();
         public FlightPage()
         {
             InitializeComponent();
-            DataContext = context.Flights.Include(x => x.Airplane).Include(x => x.CheifPilot).ToList();
+            DataContext = flightRepository.GetAll();
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
@@ -37,19 +39,59 @@ namespace AirportInformationSystemWPF.View.Pages
             if (flightWindow.ShowDialog() == true)
             {
                 Flight flight = flightWindow.Flight;
-                context.Flights.Add(flight);
-                context.SaveChanges();
-                DataContext = context.Flights.Include(x => x.Airplane).Include(x => x.CheifPilot).ToList();
+                flightRepository.Create(flight);
+                flightRepository.Save();
+                DataContext = flightRepository.GetAll();
             }
         }
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
+            Flight? flight = ListBoxView.SelectedItem as Flight;
+
+            if (flight is null) return;
+
+            FlightWindow flightWindow = new FlightWindow(new Flight
+            {
+                Id = flight.Id,
+                Destination = flight.Destination,
+                DepartureCity = flight.DepartureCity,
+                DepartureDate = flight.DepartureDate,
+                ArrivalDate = flight.ArrivalDate,
+                AirplaneId = flight.AirplaneId,
+                ChiefPilotId = flight.ChiefPilotId,
+            });
+
+            if (flightWindow.ShowDialog() == true)
+            {
+                flight = flightRepository.GetById(flightWindow.Flight.Id);
+                if (flight != null)
+                {
+                    flight.Destination = flightWindow.Flight.Destination;
+                    flight.DepartureCity = flightWindow.Flight.DepartureCity;
+                    flight.ArrivalDate = flightWindow.Flight.ArrivalDate;
+                    flight.AirplaneId = flightWindow.Flight.AirplaneId;
+                    flight.DepartureDate = flightWindow.Flight.DepartureDate;
+                    flight.ChiefPilotId = flightWindow.Flight.ChiefPilotId;
+
+                    flightRepository.Save();
+
+                    ListBoxView.Items.Refresh();
+                }
+            }
 
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
+            Flight? flight = ListBoxView.SelectedItem as Flight;
+
+            if (flight is null) return;
+
+            flightRepository.Delete(flight.Id);
+            flightRepository.Save();
+
+            DataContext = flightRepository.GetAll();
 
         }
     }

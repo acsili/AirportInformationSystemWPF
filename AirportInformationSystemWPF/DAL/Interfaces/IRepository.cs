@@ -9,15 +9,12 @@ namespace AirportInformationSystemWPF.DAL.Interfaces
 {
     internal interface IRepository<T> where T : class, IEntity
     {
-        IEnumerable<T> GetAll();
-        Task<T> GetById(int id);
-        Task<T> GetByName(string name);
-        Task Create(T item);
-        Task Update(T item);
+        List<T> GetAll();
+        T GetById(int id);
+        void Create(T item);
+        void Update(T item);
         void Delete(int id);
-        Task Save();
-        Task Load();
-        ObservableCollection<T> ToObservableCollection();
+        void Save();
 
     }
 }
