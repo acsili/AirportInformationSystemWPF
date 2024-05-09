@@ -15,16 +15,38 @@
             <Setter Property="Background" Value="LightSteelBlue" />
         </Style>
         <Style TargetType="TextBlock">
-            <Setter Property="Margin" Value="20, 5, 20, 5" />
+            <Setter Property="Margin" Value="0, 0, 0, 0" />
         </Style>
     </Page.Resources>
 
     <Grid Background="LightGray">
         <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
             <RowDefinition />
             <RowDefinition Height="50" />
         </Grid.RowDefinitions>
-        <ListBox x:Name="ListBoxView" ItemsSource="{Binding}">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="170"/>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="150"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="*" FontSize="16"/>
+            <TextBlock Text="Название" Grid.Row="1" FontSize="16" Grid.Column="1"/>
+            <TextBlock Text="Количество мест" Grid.Row="2" FontSize="16" Grid.Column="2"/>
+            <TextBlock Text="Максимальная скорость" Grid.Row="3" FontSize="16" Grid.Column="3"/>
+            <TextBlock Text="Дальность полета" Grid.Row="3" FontSize="16" Grid.Column="4"/>
+            <TextBlock Text="Вес" Grid.Row="3" FontSize="16" Grid.Column="5"/>
+        </Grid>
+        
+        <ListBox x:Name="ListBoxView" ItemsSource="{Binding}" Grid.Row="1">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -32,13 +54,14 @@
                             <RowDefinition />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="130" />
-                            <ColumnDefinition Width="130"/>
-                            <ColumnDefinition Width="130"/>
-                            <ColumnDefinition Width="130"/>
-                            <ColumnDefinition Width="130"/>
-                            <ColumnDefinition Width="130"/>
+                            <ColumnDefinition Width="40" />
+                            <ColumnDefinition Width="170"/>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="200"/>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="150"/>
                         </Grid.ColumnDefinitions>
+                        
                         <TextBlock Text="{Binding Id}" FontSize="16" />
                         <TextBlock Text="{Binding Name}" FontSize="16" Grid.Column="1"/>
                         <TextBlock Text="{Binding AmountOfSeats}" FontSize="16" Grid.Column="2"/>
@@ -52,7 +75,7 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Content="Добавить" Margin="10" Click="Add_Click" FontSize="16"/>
             <Button Content="Изменить" Margin="10" Click="Edit_Click"  FontSize="16"/>
             <Button Content="Удалить" Margin="10" Click="Delete_Click"  FontSize="16"/>
