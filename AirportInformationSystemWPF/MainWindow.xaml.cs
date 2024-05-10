@@ -1,4 +1,5 @@
 ﻿using AirportInformationSystemWPF.DAL;
+using AirportInformationSystemWPF.View.Forms;
 using AirportInformationSystemWPF.View.Pages;
 using System.Text;
 using System.Windows;
@@ -30,6 +31,7 @@ namespace AirportInformationSystemWPF
             MenuItemAirplane.Click += MenuItemAirplane_Click;
             MenuItemFlight.Click += MenuItemFlight_Click;
             MenuItemTicket.Click += MenuItemTicket_Click;
+            MenuItemPassengerTicket.Click += MenuItemPassengerTicket_Click;
         }
 
         private void MenuItemCashier_Click(object sender, RoutedEventArgs e)
@@ -72,6 +74,12 @@ namespace AirportInformationSystemWPF
         {
             MainFrame.Content = new TicketPage();
             LabelTableName.Content = "Билеты";
+        }
+
+        private void MenuItemPassengerTicket_Click(object sender, RoutedEventArgs e)
+        {
+            var ptw = new PassengerTicketWindow();
+            ptw.Show();
         }
     }
 }

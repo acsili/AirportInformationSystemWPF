@@ -26,14 +26,14 @@ namespace AirportInformationSystemWPF.View.Forms
     {
         public Flight Flight { get; set; }
         IAirplaneRepository airplaneRepository = new AirplaneRepository();
-        ICashierRepository cashierRepository = new CashierRepository();
+        IChiefPilotRepository chiefPilotRepository = new ChiefPilotRepository();
         public FlightWindow(Flight flight)
         {
             InitializeComponent();
             Flight = flight;
             DataContext = Flight;
             ComboBoxAirplanes.DataContext = airplaneRepository.GetAll();
-            ComboBoxChiefPilots.DataContext = cashierRepository.GetAll();
+            ComboBoxChiefPilots.DataContext = chiefPilotRepository.GetAll();
         }
 
         private void Accept_Click(object sender, RoutedEventArgs e)

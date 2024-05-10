@@ -32,7 +32,10 @@
                 <MenuItem Name="MenuItemTicket" Header="Билеты" Click="MenuItemTicket_Click"></MenuItem>
             </MenuItem>
 
-            <MenuItem Header="View" ></MenuItem>
+            <MenuItem Header="Операции" >
+                <MenuItem Name="MenuItemPassengerTicket" Header="Оформить билет" Click="MenuItemPassengerTicket_Click"></MenuItem>
+                
+            </MenuItem>
         </Menu>
 
         <Frame Name = "MainFrame" Background="WhiteSmoke" NavigationUIVisibility="Hidden" Margin="50,100,50,50">
