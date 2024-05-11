@@ -25,9 +25,9 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                        <TextBlock Text="{Binding Id}" FontSize="16" />
-                        <TextBlock Text="{Binding AirplaneModel.Name}" FontSize="16" />
-                        <TextBlock Text="{Binding AirplaneModel.AmountOfSeats}" FontSize="16" />
+                        <TextBlock Text="{Binding StringFormat=Номер - {0}, Path=Id}" FontSize="16" />
+                        <TextBlock Text="{Binding StringFormat=Название - {0}, Path=AirplaneModel.Name}" FontSize="16" />
+                        <TextBlock Text="{Binding StringFormat=Количество мест - {0}, Path=AirplaneModel.AmountOfSeats}" FontSize="16" />
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

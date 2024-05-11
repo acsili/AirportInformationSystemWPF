@@ -24,12 +24,26 @@
         <ListBox x:Name="ListBoxView" ItemsSource="{Binding}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel>
+                    <Grid Background="LightGray">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="500" />
+                        </Grid.ColumnDefinitions>
                         <TextBlock Text="{Binding Id}" FontSize="16" />
-                        <TextBlock Text="{Binding Price}" FontSize="16" />
-                        <TextBlock Text="{Binding SeatNumber}" FontSize="16" />
-                        <TextBlock Text="{Binding Cashier.Name}" FontSize="16" />
-                    </StackPanel>
+                        <TextBlock Text="{Binding StringFormat=Цена - {0}, Path=Price}" FontSize="16" Grid.Row="1"/>
+                        <TextBlock Text="{Binding StringFormat=Номер места - {0}, Path=SeatNumber}" FontSize="16" Grid.Row="2"/>
+                        <TextBlock Text="{Binding StringFormat=Номер рейса - {0}, Path=FlightId}" FontSize="16" Grid.Row="1" Grid.Column="1"/>
+                        <TextBlock FontSize="16" Grid.Row="2" Grid.Column="1">
+                            <Run Text="Кассир - "/>
+                            <Run Text="{Binding Cashier.Name}"/>
+                            <Run Text="{Binding Cashier.Surname}"/>
+                        </TextBlock>
+                    </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>

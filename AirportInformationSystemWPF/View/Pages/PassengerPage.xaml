@@ -24,13 +24,25 @@
         <ListBox x:Name="ListBoxView" ItemsSource="{Binding}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel>
+                    <Grid Background="LightGray">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="500" />
+                        </Grid.ColumnDefinitions>
                         <TextBlock Text="{Binding Id}" FontSize="16" />
-                        <TextBlock Text="{Binding Name}" FontSize="16" />
-                        <TextBlock Text="{Binding Surname}" FontSize="16" />
-                        <TextBlock Text="{Binding PassengerPassport.Series}" FontSize="16" />
-                        <TextBlock Text="{Binding PassengerPassport.Number}" FontSize="16" />
-                    </StackPanel>
+                        <TextBlock Text="{Binding Name}" FontSize="16" Grid.Row="1"/>
+                        <TextBlock Text="{Binding Surname}" FontSize="16" Grid.Row="2"/>
+                        <TextBlock FontSize="16" Grid.Row="1" Grid.Column="1">
+                            <Run Text="Серия и номер паспорта - "/>
+                            <Run Text="{Binding PassengerPassport.Series}"/>
+                            <Run Text="{Binding PassengerPassport.Number}"/>
+                        </TextBlock>
+                    </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
