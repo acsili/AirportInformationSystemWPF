@@ -48,6 +48,11 @@ namespace AirportInformationSystemWPF.DAL.Repositories
             return _context.PassengerPassports.Find(id);
         }
 
+        public List<Ticket> GetPassengerTickets(int id)
+        {
+            return _context.Passengers.Include(x => x.Tickets).FirstOrDefault(x => x.Id == id).Tickets;
+        }
+
         public void Save()
         {
             _context.SaveChanges();

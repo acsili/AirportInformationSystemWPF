@@ -10,5 +10,6 @@ namespace AirportInformationSystemWPF.DAL.Interfaces
     internal interface IPassengerRepository : IRepository<Passenger>
     {
         PassengerPassport GetPassengerPassport(int id);
+        List<Ticket> GetPassengerTickets(int id);
     }
 }

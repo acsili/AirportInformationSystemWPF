@@ -32,6 +32,7 @@ namespace AirportInformationSystemWPF
             MenuItemFlight.Click += MenuItemFlight_Click;
             MenuItemTicket.Click += MenuItemTicket_Click;
             MenuItemPassengerTicket.Click += MenuItemPassengerTicket_Click;
+            MenuItemPrepareTicket.Click += MenuItemPrepareTicket_Click;
         }
 
         private void MenuItemCashier_Click(object sender, RoutedEventArgs e)
@@ -79,6 +80,12 @@ namespace AirportInformationSystemWPF
         private void MenuItemPassengerTicket_Click(object sender, RoutedEventArgs e)
         {
             var ptw = new PassengerTicketWindow();
+            ptw.Show();
+        }
+
+        private void MenuItemPrepareTicket_Click(object sender, RoutedEventArgs e)
+        {
+            var ptw = new PrepareTicketWindow();
             ptw.Show();
         }
     }

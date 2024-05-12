@@ -34,7 +34,7 @@
 
             <MenuItem Header="Операции" >
                 <MenuItem Name="MenuItemPassengerTicket" Header="Оформить билет" Click="MenuItemPassengerTicket_Click"></MenuItem>
-                
+                <MenuItem Name="MenuItemPrepareTicket" Header="Посмотреть билеты" Click="MenuItemPrepareTicket_Click"></MenuItem>
             </MenuItem>
         </Menu>
 
