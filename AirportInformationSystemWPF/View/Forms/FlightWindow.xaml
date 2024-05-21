@@ -46,8 +46,8 @@
 
         <TextBox Text="{Binding DepartureCity}" Grid.Column="1" FontSize="16"/>
         <TextBox Text="{Binding Destination}" Grid.Column="1" Grid.Row="1" FontSize="16"/>
-        <TextBox Text="{Binding DepartureDate, StringFormat='yyyy-mm-dd hh:mm:ss'}" Grid.Column="1" Grid.Row="2" FontSize="16"/>
-        <TextBox Text="{Binding ArrivalDate, StringFormat='yyyy-mm-dd hh:mm:ss'}" Grid.Column="1" Grid.Row="3" FontSize="16"/>
+        <TextBox Text="{Binding DepartureDate, StringFormat='yyyy/mm/dd hh:mm:ss'}" Grid.Column="1" Grid.Row="2" FontSize="16"/>
+        <TextBox Text="{Binding ArrivalDate, StringFormat='yyyy/mm/dd hh:mm:ss'}" Grid.Column="1" Grid.Row="3" FontSize="16"/>
         <ComboBox Name="ComboBoxAirplanes" Grid.Column="1" Grid.Row="4" FontSize="16" ItemsSource="{Binding}" SelectionChanged="ComboBoxAirplanes_SelectionChanged">
             <ComboBox.ItemTemplate>
                 <DataTemplate>

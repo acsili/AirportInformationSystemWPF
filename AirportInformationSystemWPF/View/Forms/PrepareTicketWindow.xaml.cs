@@ -1,5 +1,6 @@
 ﻿using AirportInformationSystemWPF.DAL.Interfaces;
 using AirportInformationSystemWPF.DAL.Repositories;
+using AirportInformationSystemWPF.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,7 @@ namespace AirportInformationSystemWPF.View.Forms
     {
         ITicketRepository ticketRepository = new TicketRepository();
         IPassengerRepository passengerRepository = new PassengerRepository();
+        int ticketId;
         public PrepareTicketWindow()
         {
             InitializeComponent();
@@ -32,6 +34,19 @@ namespace AirportInformationSystemWPF.View.Forms
         {
             var passengerTickets = passengerRepository.GetPassengerTickets(int.Parse(PassengerIdTextBox.Text));
             DataContext = passengerTickets;
+        }
+
+        private void ShowTicketButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ListBox.SelectedItem is Ticket ticket)
+            {
+                ticketId = ticket.Id;
+            }
         }
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AirportInformationSystemWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="1000">
+        Title="Airport information system" Height="600" Width="1000">
 
     <Grid Background="LightSteelBlue">
         <Grid Background="LightGray" Margin="50,50,50,50">
@@ -13,15 +13,7 @@
 
         </Grid>
         <Menu Height="25" VerticalAlignment="Top" FontSize="16">
-            <MenuItem Header="File">
-                <MenuItem Header="New Project" ></MenuItem>
-                <MenuItem Header="Open Project" >
-                    <MenuItem Header="WinForms"></MenuItem>
-                    <MenuItem Header="WPF" ></MenuItem>
-                </MenuItem>
-                <Separator />
-                <MenuItem Header="Exit" ></MenuItem>
-            </MenuItem>
+            
             <MenuItem Header="Таблицы" >
                 <MenuItem Name="MenuItemCashier" Header="Кассиры" Click="MenuItemCashier_Click"></MenuItem>
                 <MenuItem Name="MenuItemChiefPilot" Header="Главные пилоты" Click="MenuItemChiefPilot_Click"></MenuItem>

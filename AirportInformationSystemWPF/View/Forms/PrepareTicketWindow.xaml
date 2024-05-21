@@ -5,20 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AirportInformationSystemWPF.View.Forms"
         mc:Ignorable="d"
-        Title="PrepareTicketWindow" Height="450" Width="800">
+        Title="PrepareTicketWindow" Height="450" Width="900">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="300"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <ListBox x:Name="ListBox" ItemsSource="{Binding}" Grid.Row="1">
+        <ListBox x:Name="ListBox" ItemsSource="{Binding}" Grid.Row="1" SelectionChanged="ListBox_SelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    
+
                     <StackPanel>
                         <TextBlock Text="{Binding Id}" FontSize="16" />
                         <TextBlock Text="{Binding StringFormat=Цена - {0}, Path=Price}" FontSize="16"/>
@@ -29,17 +29,55 @@
                             <Run Text="{Binding Cashier.Name}"/>
                             <Run Text="{Binding Cashier.Surname}"/>
                         </TextBlock>-->
-                        
+
                     </StackPanel>
-                
-                 </DataTemplate>
+
+                </DataTemplate>
 
             </ListBox.ItemTemplate>
         </ListBox>
-        
+
         <TextBox Name="PassengerIdTextBox" HorizontalAlignment="Left" Margin="10" TextWrapping="Wrap" 
                  Text="" VerticalAlignment="Center" Width="150" Height="30" FontSize="16"/>
-        <Button HorizontalAlignment="Right" Margin="10" Width="70" Background="WhiteSmoke" Content="OK" FontSize="16" Click="Button_Click"></Button>
+        <Button HorizontalAlignment="Right" Margin="10" Width="70" Background="WhiteSmoke" 
+                Content="OK" FontSize="16" Click="Button_Click"></Button>
+        <Button Name="ShowTicketButton" HorizontalAlignment="Right" Margin="10" Width="130" Background="WhiteSmoke" 
+                Content="Показать билет" FontSize="16" Grid.Column="1" Click="ShowTicketButton_Click" />
+        <Canvas Margin="10" Grid.Column="1" Grid.Row="1">
+            <Rectangle Height="50" Stroke="Black" Width="580" Fill="LightSteelBlue"/>
+            <TextBlock Text="Имя пассажира" FontSize="22" HorizontalAlignment="Center" 
+                       Canvas.Left="10" VerticalAlignment="Top" Canvas.Top="89" />
+            <TextBlock Text="Имя пассажира" FontSize="18" HorizontalAlignment="Center" 
+                       Canvas.Left="10" VerticalAlignment="Top" FontWeight="Bold" Canvas.Top="63" />
+            <TextBlock Text="Билет" FontSize="26" HorizontalAlignment="Center" 
+                       Canvas.Left="10" VerticalAlignment="Top" Canvas.Top="8" />
+            <TextBlock Text="Из: " FontSize="18" 
+                Canvas.Left="10" FontWeight="Bold" Canvas.Top="140" HorizontalAlignment="Center" VerticalAlignment="Top" />
+            <TextBlock Text="Из" FontSize="22" 
+                Canvas.Left="48" Canvas.Top="135" HorizontalAlignment="Left" VerticalAlignment="Top" />
+            <TextBlock Text="В: " FontSize="18" 
+                Canvas.Left="10" FontWeight="Bold" Canvas.Top="172" HorizontalAlignment="Center" VerticalAlignment="Top" />
+            <TextBlock Text="В" FontSize="22" 
+                Canvas.Left="48" Canvas.Top="167" HorizontalAlignment="Center" VerticalAlignment="Top" />
+            <TextBlock Text="Рейс" FontSize="18" 
+                Canvas.Left="275" FontWeight="Bold" Canvas.Top="63" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <TextBlock Text="Рейс" FontSize="22" 
+                Canvas.Left="275" Canvas.Top="89" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <TextBlock Text="Место" FontSize="18" 
+                Canvas.Left="401" FontWeight="Bold" Canvas.Top="63" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <TextBlock Text="Место" FontSize="26" 
+                Canvas.Left="401" Canvas.Top="89" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" />
+            <TextBlock Text="Дата" FontSize="18" 
+                Canvas.Left="10" FontWeight="Bold" Canvas.Top="237" HorizontalAlignment="Center" VerticalAlignment="Top" />
+            <TextBlock Text="Дата" FontSize="22" 
+                Canvas.Left="10" Canvas.Top="261" HorizontalAlignment="Center" VerticalAlignment="Top" />
+            <TextBlock Text="Время вылета" FontSize="18" 
+                Canvas.Left="240" FontWeight="Bold" Canvas.Top="237" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <TextBlock Text="Время" FontSize="30" 
+                Canvas.Left="240" Canvas.Top="258" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="Red" FontWeight="Bold" />
+            <Rectangle Height="364" Stroke="Black" Width="580"/>
+            
+        </Canvas>
 
     </Grid>
 </Window>
