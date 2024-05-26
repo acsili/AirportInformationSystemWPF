@@ -42,6 +42,15 @@ namespace AirportInformationSystemWPF.View.Forms
 
         private void ShowTicketButton_Click(object sender, RoutedEventArgs e)
         {
+            
+        }
+
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ListBox.SelectedItem is Ticket ticketSelected)
+            {
+                ticketId = ticketSelected.Id;
+            }
             DateTextBlock.Text = DateTime.Now.ToShortDateString();
             var passenger = passengerRepository.GetById(passengerId);
             PassengerTextBlock.Text = passenger.Name + " " + passenger.Surname;
@@ -55,15 +64,7 @@ namespace AirportInformationSystemWPF.View.Forms
             TicketPassengerTextBlock.Text = "Билет № " + ticketId + " пассажира " + passenger.Name + " " + passenger.Surname;
         }
 
-        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (ListBox.SelectedItem is Ticket ticket)
-            {
-                ticketId = ticket.Id;
-            }
-        }
-
-        //TicketCanvas
+        
         private void SaveTicketButton_Click(object sender, RoutedEventArgs e)
         {
             Rect bounds = VisualTreeHelper.GetDescendantBounds(TicketCanvas);
@@ -89,7 +90,7 @@ namespace AirportInformationSystemWPF.View.Forms
                 png.Save(stm);
             }
 
-            MessageBox.Show("Od");
+            MessageBox.Show("Билет сохранен");
         }
     }
 }

@@ -38,6 +38,8 @@ namespace AirportInformationSystemWPF.View.Forms
 
         private void Accept_Click(object sender, RoutedEventArgs e)
         {
+            Flight.DepartureDate = DateTime.Parse(TextBoxDepartureDate.Text);
+            Flight.ArrivalDate = DateTime.Parse(TextBoxArrivalDate.Text);
             DialogResult = true;
         }
 

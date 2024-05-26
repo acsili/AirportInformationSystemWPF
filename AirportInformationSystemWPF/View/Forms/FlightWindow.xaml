@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AirportInformationSystemWPF.View.Forms"
         mc:Ignorable="d"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         Title="FlightWindow" Height="450" Width="450">
     <Window.Resources>
         <Style TargetType="TextBlock">
@@ -46,8 +47,8 @@
 
         <TextBox Text="{Binding DepartureCity}" Grid.Column="1" FontSize="16"/>
         <TextBox Text="{Binding Destination}" Grid.Column="1" Grid.Row="1" FontSize="16"/>
-        <TextBox Text="{Binding DepartureDate, StringFormat='yyyy/mm/dd hh:mm:ss'}" Grid.Column="1" Grid.Row="2" FontSize="16"/>
-        <TextBox Text="{Binding ArrivalDate, StringFormat='yyyy/mm/dd hh:mm:ss'}" Grid.Column="1" Grid.Row="3" FontSize="16"/>
+        <TextBox x:Name="TextBoxDepartureDate" Text="{Binding Source={x:Static sys:DateTime.Now}, Mode=OneWay,  StringFormat='yyyy-MM-dd HH:mm:ss '}" Grid.Column="1" Grid.Row="2" FontSize="16"/>
+        <TextBox x:Name="TextBoxArrivalDate" Text="{Binding Source={x:Static sys:DateTime.Now}, Mode=OneWay,  StringFormat='yyyy-MM-dd HH:mm:ss '}" Grid.Column="1" Grid.Row="3" FontSize="16"/>
         <ComboBox Name="ComboBoxAirplanes" Grid.Column="1" Grid.Row="4" FontSize="16" ItemsSource="{Binding}" SelectionChanged="ComboBoxAirplanes_SelectionChanged">
             <ComboBox.ItemTemplate>
                 <DataTemplate>

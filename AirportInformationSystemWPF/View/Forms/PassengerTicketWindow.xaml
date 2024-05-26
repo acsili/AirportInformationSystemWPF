@@ -8,12 +8,12 @@
         Title="PassengerTicketWindow" Height="350" Width="350">
     <Grid>
         <TextBox Name="TextBoxPassenger" HorizontalAlignment="Center" Margin="0,79,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" FontSize="16"/>
-        <TextBlock HorizontalAlignment="Center" Margin="0,33,0,0" TextWrapping="Wrap" Text="Введите id пассажира" VerticalAlignment="Top" FontSize="16"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,33,0,0" TextWrapping="Wrap" Text="Введите Id пассажира" VerticalAlignment="Top" FontSize="16"/>
 
         <TextBox Name="TextBoxTicket" HorizontalAlignment="Center" Margin="0,186,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" FontSize="16"/>
-        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Введите id билета" VerticalAlignment="Top" FontSize="16" Margin="0,138,0,0"/>
+        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Введите Id билета" VerticalAlignment="Top" FontSize="16" Margin="0,138,0,0"/>
         
-        <Button Content="OK" HorizontalAlignment="Center" Margin="0,244,0,0" Name="Accept" Background="White" VerticalAlignment="Top" Height="45" Width="70" Click="Accept_Click"/>
+        <Button Content="Оформить" HorizontalAlignment="Center" Margin="0,244,0,0" Name="Accept" Background="White" VerticalAlignment="Top" Height="45" Width="70" Click="Accept_Click"/>
 
     </Grid>
 </Window>

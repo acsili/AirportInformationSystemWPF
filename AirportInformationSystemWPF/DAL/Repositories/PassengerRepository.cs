@@ -18,10 +18,10 @@ namespace AirportInformationSystemWPF.DAL.Repositories
             _context = new ApplicationContext();
         }
 
-        public void Create(Passenger item)
+        public void Create(Passenger? item)
         {
-            _context.PassengerPassports.Add(item.PassengerPassport);
-            _context.Passengers.Add(item);
+            _context.PassengerPassports.Add(item!.PassengerPassport!);
+            _context.Passengers.Add(item!);
         }
 
         public void Delete(int id)
@@ -40,17 +40,17 @@ namespace AirportInformationSystemWPF.DAL.Repositories
 
         public Passenger GetById(int id)
         {
-            return _context.Passengers.Find(id);
+            return _context.Passengers.Find(id)!;
         }
 
         public PassengerPassport GetPassengerPassport(int id)
         {
-            return _context.PassengerPassports.Find(id);
+            return _context.PassengerPassports.Find(id)!;
         }
 
         public List<Ticket> GetPassengerTickets(int id)
         {
-            return _context.Passengers.Include(x => x.Tickets).FirstOrDefault(x => x.Id == id).Tickets;
+            return _context.Passengers.Include(x => x.Tickets).FirstOrDefault(x => x.Id == id)!.Tickets;
         }
 
         public void Save()

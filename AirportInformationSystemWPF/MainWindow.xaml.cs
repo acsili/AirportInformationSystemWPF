@@ -23,7 +23,7 @@ namespace AirportInformationSystemWPF
         public MainWindow()
         {
             InitializeComponent();
-
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
             MenuItemCashier.Click += MenuItemCashier_Click;
             MenuItemChiefPilot.Click += MenuItemChiefPilot_Click;
             MenuItemPassenger.Click += MenuItemPassenger_Click;

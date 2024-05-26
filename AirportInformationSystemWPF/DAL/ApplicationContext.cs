@@ -21,9 +21,9 @@ namespace AirportInformationSystemWPF.DAL
 
         public ApplicationContext()
         {
-            //Database.EnsureDeleted();
             Database.EnsureCreated();
         }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=AirportDB;Username=postgres;Password=54321");

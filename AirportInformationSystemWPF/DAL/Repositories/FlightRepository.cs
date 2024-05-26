@@ -31,12 +31,12 @@ namespace AirportInformationSystemWPF.DAL.Repositories
 
         public List<Flight> GetAll()
         {
-            return _context.Flights.Include(x => x.Airplane.AirplaneModel).Include(x => x.ChiefPilot).ToList();
+            return _context.Flights.Include(x => x.Airplane!.AirplaneModel).Include(x => x.ChiefPilot).ToList();
         }
 
         public Flight GetById(int id)
         {
-            return _context.Flights.Find(id);
+            return _context.Flights.Find(id)!;
         }
 
         public void Save()

@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <Folder Include="TicketImages\" />
+    <Folder Include="View\Icons\" />
   </ItemGroup>
 
 </Project>
