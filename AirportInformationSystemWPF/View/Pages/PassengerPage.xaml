@@ -24,15 +24,17 @@
         <ListBox x:Name="ListBoxView" ItemsSource="{Binding}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Grid Background="LightGray">
+                    <Grid Background="White">
                         <Grid.RowDefinitions>
+                            <RowDefinition />
                             <RowDefinition />
                             <RowDefinition />
                             <RowDefinition />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="150" />
-                            <ColumnDefinition Width="500" />
+                            <ColumnDefinition Width="350" />
+                            <ColumnDefinition Width="100" />
                         </Grid.ColumnDefinitions>
                         <TextBlock Text="{Binding Id}" FontSize="16" />
                         <TextBlock Text="{Binding Name}" FontSize="16" Grid.Row="1"/>
@@ -42,9 +44,15 @@
                             <Run Text="{Binding PassengerPassport.Series}"/>
                             <Run Text="{Binding PassengerPassport.Number}"/>
                         </TextBlock>
+                        <TextBlock FontSize="16" Grid.Row="1" Grid.Column="2">
+                            <Run Text="Возраст - "/>
+                            <Run Text="{Binding Age}"/>
+                        </TextBlock>
                     </Grid>
                 </DataTemplate>
+                
             </ListBox.ItemTemplate>
+            
         </ListBox>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">

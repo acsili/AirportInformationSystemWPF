@@ -37,16 +37,13 @@
         <TextBlock Text="Серия паспорта" Grid.Row="2" FontSize="16"/>
         <TextBlock Text="Номер паспорта" Grid.Row="3" FontSize="16"/>
         <TextBlock Text="Возраст" Grid.Row="4" FontSize="16"/>
-
         <TextBox Text="{Binding Name}" Grid.Column="1" FontSize="16"/>
         <TextBox Text="{Binding Surname}" Grid.Column="1" Grid.Row="1" FontSize="16"/>
         <TextBox Text="{Binding PassengerPassport.Series}" Grid.Column="1" Grid.Row="2" FontSize="16"/>
         <TextBox Text="{Binding PassengerPassport.Number}" Grid.Column="1" Grid.Row="3" FontSize="16"/>
         <TextBox Text="{Binding Age}" Grid.Column="1" Grid.Row="4" FontSize="16"/>
-
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Row="5" Grid.Column="1">
             <Button IsDefault="True" Click="Accept_Click" FontSize="16">OK</Button>
         </StackPanel>
-
     </Grid>
 </Window>

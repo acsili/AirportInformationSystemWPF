@@ -85,7 +85,7 @@ namespace AirportInformationSystemWPF.View.Forms
 
             png.Frames.Add(BitmapFrame.Create(rtb));
 
-            using (Stream stm = File.Create("ticket" + Guid.NewGuid() + ".png"))
+            using (Stream stm = File.Create("D:\\C_Projs\\AirportInformationSystemWPF\\AirportInformationSystemWPF\\TicketImages\\ticket" + Guid.NewGuid() + ".png"))
             {
                 png.Save(stm);
             }

@@ -13,7 +13,7 @@
         <TextBox Name="TextBoxTicket" HorizontalAlignment="Center" Margin="0,186,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" FontSize="16"/>
         <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Введите Id билета" VerticalAlignment="Top" FontSize="16" Margin="0,138,0,0"/>
         
-        <Button Content="Оформить" HorizontalAlignment="Center" Margin="0,244,0,0" Name="Accept" Background="White" VerticalAlignment="Top" Height="45" Width="70" Click="Accept_Click"/>
+        <Button Content="Оформить" FontSize="16" HorizontalAlignment="Center" Margin="0,244,0,0" Name="Accept" Background="White" VerticalAlignment="Top" Height="45" Width="90" Click="Accept_Click"/>
 
     </Grid>
 </Window>
