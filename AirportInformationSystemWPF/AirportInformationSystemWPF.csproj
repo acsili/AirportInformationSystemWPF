@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="TicketImages\" />
+    <Folder Include="SavedTickets\" />
     <Folder Include="View\Icons\" />
   </ItemGroup>
 

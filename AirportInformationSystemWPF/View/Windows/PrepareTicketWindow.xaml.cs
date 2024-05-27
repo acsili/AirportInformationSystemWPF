@@ -40,10 +40,6 @@ namespace AirportInformationSystemWPF.View.Forms
             DataContext = passengerTickets;
         }
 
-        private void ShowTicketButton_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

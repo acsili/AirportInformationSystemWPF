@@ -43,9 +43,7 @@
                        Canvas.Left="10" VerticalAlignment="Top" Canvas.Top="100" Height="25" Margin="0,8,0,0" />
         <Button HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" Height="30" Width="80" Background="WhiteSmoke" 
                 Content="OK" FontSize="16" Click="Button_Click"></Button>
-        <Button Name="ShowTicketButton" HorizontalAlignment="Right" Margin="10" Width="130" Background="WhiteSmoke" 
-                Content="Показать билет" FontSize="16" Grid.Column="1" Click="ShowTicketButton_Click" />
-        <Button Name="SaveTicketButton" HorizontalAlignment="Left" Margin="400,10,0,10" Width="130" Background="WhiteSmoke" 
+        <Button Name="SaveTicketButton" HorizontalAlignment="Left" Margin="550,10,0,10" Width="130" Background="WhiteSmoke" 
                 Content="Сохранть билет" FontSize="16" Grid.Column="1" Click="SaveTicketButton_Click" />
         <TextBlock Name="TicketPassengerTextBlock" Text="" Margin="10" FontSize="16" HorizontalAlignment="Left" 
                        Canvas.Left="10" VerticalAlignment="Center" Canvas.Top="89" Grid.Column="1" />
