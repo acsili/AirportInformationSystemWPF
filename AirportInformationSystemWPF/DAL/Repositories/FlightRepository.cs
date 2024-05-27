@@ -36,7 +36,7 @@ namespace AirportInformationSystemWPF.DAL.Repositories
 
         public Flight GetById(int id)
         {
-            return _context.Flights.Find(id)!;
+            return _context.Flights.Include(x => x.Tickets).ThenInclude(x => x.Passengers).ThenInclude(x => x.PassengerPassport).FirstOrDefault(x => x.Id == id)!;
         }
 
         public void Save()
