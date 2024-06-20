@@ -1,7 +1,10 @@
 ﻿using AirportInformationSystemWPF.DAL.Interfaces;
 using AirportInformationSystemWPF.DAL.Repositories;
 using AirportInformationSystemWPF.Model;
+using Microsoft.Win32;
 using System.IO;
+using System.Text.Json;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -73,7 +76,19 @@ namespace AirportInformationSystemWPF.View.Forms
 
             png.Frames.Add(BitmapFrame.Create(rtb));
 
-            using (Stream stm = File.Create("D:\\C_Projs\\AirportInformationSystemWPF\\AirportInformationSystemWPF\\SavedTickets\\ticket" + Guid.NewGuid() + ".png"))
+            var fileName = string.Empty;
+            var sd = new SaveFileDialog
+            {
+                DefaultExt = "png"
+            };
+            if (sd.ShowDialog() == true)
+            {
+                fileName = sd.FileName;
+            }
+            if (fileName == string.Empty)
+                return;
+
+            using (Stream stm = File.Create(fileName))
             {
                 png.Save(stm);
             }

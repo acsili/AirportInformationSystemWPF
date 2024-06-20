@@ -16,7 +16,7 @@
 
             <MenuItem Header="Таблицы" Height="50" Width="110">
                 <MenuItem.Icon>
-                    <Image Source="D:\C_Projs\AirportInformationSystemWPF\AirportInformationSystemWPF\View\Icons\Pictogrammers-Material-Table-large.512.png"></Image>
+                    <Image Source="View\Icons\Pictogrammers-Material-Table-large.512.png"></Image>
                 </MenuItem.Icon>
                 <MenuItem Name="MenuItemCashier" Header="Кассиры" Click="MenuItemCashier_Click"></MenuItem>
                 <MenuItem Name="MenuItemChiefPilot" Header="Главные пилоты" Click="MenuItemChiefPilot_Click"></MenuItem>
@@ -29,7 +29,7 @@
 
             <MenuItem Header="Операции" Width="120" >
                 <MenuItem.Icon>
-                    <Image Source="D:\C_Projs\AirportInformationSystemWPF\AirportInformationSystemWPF\View\Icons\Pictogrammers-Material-Table-search.512.png"></Image>
+                    <Image Source="View\Icons\Pictogrammers-Material-Table-search.512.png"></Image>
                 </MenuItem.Icon>
                 <MenuItem Name="MenuItemPassengerTicket" Header="Оформить билет" Click="MenuItemPassengerTicket_Click"></MenuItem>
                 <MenuItem Name="MenuItemPrepareTicket" Header="Посмотреть билеты" Click="MenuItemPrepareTicket_Click"></MenuItem>
@@ -38,7 +38,7 @@
 
             <MenuItem Name="MenuItemInfo" Header="Справка" HorizontalAlignment="Left" Width="100" Click="MenuItemMenuItemInfo_Click">
                 <MenuItem.Icon>
-                    <Image Source="D:\C_Projs\AirportInformationSystemWPF\AirportInformationSystemWPF\View\Icons\Github-Octicons-Info-16.512.png"></Image>
+                    <Image Source="View\Icons\Github-Octicons-Info-16.512.png"></Image>
                 </MenuItem.Icon>
             </MenuItem>
         </Menu>
