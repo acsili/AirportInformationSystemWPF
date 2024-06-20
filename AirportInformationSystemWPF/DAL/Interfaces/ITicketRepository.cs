@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AirportInformationSystemWPF.DAL.Interfaces
 {
-    internal interface ITicketRepository : IRepository<Ticket>
+    public interface ITicketRepository : IRepository<Ticket>
     {
     }
 }

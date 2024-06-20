@@ -30,6 +30,7 @@ namespace AirportInformationSystemWPF.View.Forms
 
         private void Accept_Click(object sender, RoutedEventArgs e)
         {
+            MessageBox.Show("Данные успешно добавлены");
             DialogResult = true;
         }
     }

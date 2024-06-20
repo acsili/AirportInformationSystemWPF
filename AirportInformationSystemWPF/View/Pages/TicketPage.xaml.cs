@@ -55,7 +55,6 @@ namespace AirportInformationSystemWPF.View.Pages
             {
                 Id = ticket.Id,
                 Price = ticket.Price,
-                SeatNumber = ticket.SeatNumber,
                 CashierId = ticket.CashierId,
                 FlightId = ticket.FlightId,
             });
@@ -66,7 +65,6 @@ namespace AirportInformationSystemWPF.View.Pages
                 if (ticket != null)
                 {
                     ticket.Price = ticketWindow.Ticket.Price;
-                    ticket.SeatNumber = ticketWindow.Ticket.SeatNumber;
                     ticket.CashierId = ticketWindow.Ticket.CashierId;
                     ticket.FlightId = ticketWindow.Ticket.FlightId;
 

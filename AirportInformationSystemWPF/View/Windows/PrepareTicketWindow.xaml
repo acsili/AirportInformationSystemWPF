@@ -22,7 +22,7 @@
                     <StackPanel>
                         <TextBlock Text="{Binding Id}" FontSize="16" />
                         <TextBlock Text="{Binding StringFormat=Цена - {0}, Path=Price}" FontSize="16"/>
-                        <TextBlock Text="{Binding StringFormat=Номер места - {0}, Path=SeatNumber}" FontSize="16" />
+                        <TextBlock Text="{Binding StringFormat=Номер места - {0}, Path=Seat}" FontSize="16" />
                         <TextBlock Text="{Binding StringFormat=Номер рейса - {0}, Path=FlightId}" FontSize="16" />
                         <!--<TextBlock FontSize="16">
                             <Run Text="Кассир - "/>

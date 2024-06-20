@@ -1,13 +1,6 @@
 ﻿using AirportInformationSystemWPF.DAL.Interfaces;
 using AirportInformationSystemWPF.Model;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
-
 namespace AirportInformationSystemWPF.DAL.Repositories
 {
     internal class AirplaneRepository : IAirplaneRepository

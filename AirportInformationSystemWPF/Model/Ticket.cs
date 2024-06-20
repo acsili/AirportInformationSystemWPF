@@ -11,7 +11,7 @@ namespace AirportInformationSystemWPF.Model
     {
         public int Id { get; set; }
         public int Price { get; set; }
-        public int SeatNumber { get; set; }
+        public int Seat { get; set; }
         public int FlightId { get; set; }
         public int CashierId { get; set; }
         public Flight? Flight { get; set; }

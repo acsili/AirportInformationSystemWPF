@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AirportInformationSystemWPF.DAL.Interfaces
 {
-    internal interface IEntity
+    public interface IEntity
     {
         int Id { get; set; }
     }

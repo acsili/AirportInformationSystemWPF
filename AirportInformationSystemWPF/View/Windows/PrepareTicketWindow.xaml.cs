@@ -1,20 +1,11 @@
 ﻿using AirportInformationSystemWPF.DAL.Interfaces;
 using AirportInformationSystemWPF.DAL.Repositories;
 using AirportInformationSystemWPF.Model;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace AirportInformationSystemWPF.View.Forms
 {
@@ -31,6 +22,7 @@ namespace AirportInformationSystemWPF.View.Forms
         public PrepareTicketWindow()
         {
             InitializeComponent();
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -52,7 +44,7 @@ namespace AirportInformationSystemWPF.View.Forms
             PassengerTextBlock.Text = passenger.Name + " " + passenger.Surname;
             var ticket = ticketRepository.GetById(ticketId);
             FlightTextBlock.Text = ticket.FlightId.ToString();
-            SeatTextBlock.Text = ticket.SeatNumber.ToString();
+            SeatTextBlock.Text = ticket.Seat.ToString();
             var flight = flightRepository.GetById(ticket.FlightId);
             TextBlockFrom.Text = flight.DepartureCity;
             TextBlockIn.Text = flight.Destination;
@@ -81,7 +73,7 @@ namespace AirportInformationSystemWPF.View.Forms
 
             png.Frames.Add(BitmapFrame.Create(rtb));
 
-            using (Stream stm = File.Create("D:\\C_Projs\\AirportInformationSystemWPF\\AirportInformationSystemWPF\\TicketImages\\ticket" + Guid.NewGuid() + ".png"))
+            using (Stream stm = File.Create("D:\\C_Projs\\AirportInformationSystemWPF\\AirportInformationSystemWPF\\SavedTickets\\ticket" + Guid.NewGuid() + ".png"))
             {
                 png.Save(stm);
             }

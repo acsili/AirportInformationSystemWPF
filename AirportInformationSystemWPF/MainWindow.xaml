@@ -35,8 +35,8 @@
                 <MenuItem Name="MenuItemPrepareTicket" Header="Посмотреть билеты" Click="MenuItemPrepareTicket_Click"></MenuItem>
                 <MenuItem Name="MenuItemPassengerFlight" Header="Посмотреть пассажиров рейса" Click="MenuItemPassengerFlight_Click"></MenuItem>
             </MenuItem>
-            
-            <MenuItem Header="Справка" HorizontalAlignment="Left" Width="100" >
+
+            <MenuItem Name="MenuItemInfo" Header="Справка" HorizontalAlignment="Left" Width="100" Click="MenuItemMenuItemInfo_Click">
                 <MenuItem.Icon>
                     <Image Source="D:\C_Projs\AirportInformationSystemWPF\AirportInformationSystemWPF\View\Icons\Github-Octicons-Info-16.512.png"></Image>
                 </MenuItem.Icon>

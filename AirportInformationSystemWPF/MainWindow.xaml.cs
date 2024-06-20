@@ -4,15 +4,6 @@ using AirportInformationSystemWPF.View.Pages;
 using AirportInformationSystemWPF.View.Windows;
 using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace AirportInformationSystemWPF
 {
@@ -25,6 +16,7 @@ namespace AirportInformationSystemWPF
         {
             InitializeComponent();
             AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+            ApplicationContext context = new ApplicationContext();
             MenuItemCashier.Click += MenuItemCashier_Click;
             MenuItemChiefPilot.Click += MenuItemChiefPilot_Click;
             MenuItemPassenger.Click += MenuItemPassenger_Click;
@@ -35,6 +27,7 @@ namespace AirportInformationSystemWPF
             MenuItemPassengerTicket.Click += MenuItemPassengerTicket_Click;
             MenuItemPrepareTicket.Click += MenuItemPrepareTicket_Click;
             MenuItemPassengerFlight.Click += MenuItemPassengerFlight_Click;
+            MenuItemInfo.Click += MenuItemMenuItemInfo_Click;
         }
 
         private void MenuItemCashier_Click(object sender, RoutedEventArgs e)
@@ -95,6 +88,16 @@ namespace AirportInformationSystemWPF
         {
             var fpw = new FlightPassengersWindow();
             fpw.Show();
+        }
+
+        private void MenuItemMenuItemInfo_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Справка по приложению \n" +
+                "Основные функции данной информационной системы включают в себя:\r\n" +
+                "1. Управление данными: добавление, изменение, удаление данных.\r\n" +
+                "2. Оформление билета: в соответствующем окне можно ввести id пассажира и id билета.\r\n" +
+                "3. Просмотр билетов паасажиров: в соответствующем окне можно ввести id пассажира и увидеть список имеющихся у него билетов, затем выбрав билет из списка можно получить в полном виде этого билета и сохранить его.\r\n" +
+                "4. Просмотр пассажиров рейса: в соответствующем окне можно ввести id рейса и увидеть список всех пассажиров этого рейса.");
         }
     }
 }

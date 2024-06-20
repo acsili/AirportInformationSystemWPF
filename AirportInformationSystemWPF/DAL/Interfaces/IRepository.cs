@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AirportInformationSystemWPF.DAL.Interfaces
 {
-    internal interface IRepository<T> where T : class, IEntity
+    public interface IRepository<T> where T : class, IEntity
     {
         List<T> GetAll();
         T GetById(int id);

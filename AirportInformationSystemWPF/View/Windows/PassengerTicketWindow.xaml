@@ -7,13 +7,13 @@
         mc:Ignorable="d"
         Title="PassengerTicketWindow" Height="350" Width="350">
     <Grid>
-        <TextBox Name="TextBoxPassenger" HorizontalAlignment="Center" Margin="0,79,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" FontSize="16"/>
-        <TextBlock HorizontalAlignment="Center" Margin="0,33,0,0" TextWrapping="Wrap" Text="Введите Id пассажира" VerticalAlignment="Top" FontSize="16"/>
+        <TextBox Name="TextBoxPassenger" HorizontalAlignment="Center" Margin="0,52,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" FontSize="16"/>
+        <TextBlock HorizontalAlignment="Left" Margin="93,24,0,0" TextWrapping="Wrap" Text="Введите Id пассажира" VerticalAlignment="Top" FontSize="16"/>
 
-        <TextBox Name="TextBoxTicket" HorizontalAlignment="Center" Margin="0,186,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" FontSize="16"/>
-        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Введите Id билета" VerticalAlignment="Top" FontSize="16" Margin="0,138,0,0"/>
-        
-        <Button Content="Оформить" FontSize="16" HorizontalAlignment="Center" Margin="0,244,0,0" Name="Accept" Background="White" VerticalAlignment="Top" Height="45" Width="90" Click="Accept_Click"/>
+        <TextBox Name="TextBoxTicket" HorizontalAlignment="Center" Margin="0,143,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" FontSize="16"/>
+        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Введите Id билета" VerticalAlignment="Top" FontSize="16" Margin="0,115,0,0"/>
+
+        <Button Content="Оформить" FontSize="16" HorizontalAlignment="Left" Margin="128,230,0,0" Name="Accept" Background="White" VerticalAlignment="Top" Height="45" Width="90" Click="Accept_Click"/>
 
     </Grid>
 </Window>

@@ -6,12 +6,29 @@
         xmlns:local="clr-namespace:AirportInformationSystemWPF.View.Forms"
         mc:Ignorable="d"
         Title="ChiefPilotWindow" Height="400" Width="400">
+
     <Window.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="Margin" Value="8" />
         </Style>
+        <ControlTemplate x:Key="validationFailed">
+            <StackPanel Orientation="Horizontal">
+                <Border BorderBrush="Violet" BorderThickness="2">
+                    <AdornedElementPlaceholder />
+                </Border>
+                <TextBlock Foreground="Red" FontSize="16" FontWeight="Bold">!</TextBlock>
+            </StackPanel>
+        </ControlTemplate>
         <Style TargetType="TextBox">
             <Setter Property="Margin" Value="8" />
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="True">
+                    <Setter Property="ToolTip"
+                    Value="{Binding RelativeSource={RelativeSource Self},
+                    Path=(Validation.Errors)[0].ErrorContent}" />
+                    <Setter Property="Foreground" Value="Red" />
+                </Trigger>
+            </Style.Triggers>
         </Style>
         <Style TargetType="Button">
             <Setter Property="MinWidth" Value="100" />
@@ -38,7 +55,15 @@
 
         <TextBox Text="{Binding Name}" Grid.Column="1" FontSize="16"/>
         <TextBox Text="{Binding Surname}" Grid.Column="1" Grid.Row="1" FontSize="16"/>
-        <TextBox Text="{Binding Age}" Grid.Column="1" Grid.Row="2" FontSize="16"/>
+        <TextBox Grid.Column="1" Grid.Row="2" FontSize="16" Validation.ErrorTemplate="{StaticResource validationFailed}" >
+            <TextBox.Text>
+                <Binding Path="Age">
+                    <Binding.ValidationRules>
+                        <DataErrorValidationRule />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
         <TextBox Text="{Binding Experience}" Grid.Column="1" Grid.Row="3" FontSize="16"/>
 
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Row="4" Grid.Column="1">

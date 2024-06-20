@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace AirportInformationSystemWPF.DAL.Repositories
 {
-    internal class PassengerRepository : IPassengerRepository
+    public class PassengerRepository : IPassengerRepository
     {
         ApplicationContext _context;
 

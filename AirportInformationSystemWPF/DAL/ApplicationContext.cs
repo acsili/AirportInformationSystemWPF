@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace AirportInformationSystemWPF.DAL
 {
@@ -21,6 +22,7 @@ namespace AirportInformationSystemWPF.DAL
 
         public ApplicationContext()
         {
+            //Database.EnsureDeleted();
             Database.EnsureCreated();
         }
 
@@ -28,5 +30,6 @@ namespace AirportInformationSystemWPF.DAL
         {
             optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=AirportDB;Username=postgres;Password=54321");
         }
+
     }
 }

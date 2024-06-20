@@ -34,7 +34,7 @@ namespace AirportInformationSystemWPF.View.Forms
 
             var passenger = context.Passengers.Find(int.Parse(TextBoxPassenger.Text));
             var ticket = context.Tickets.Find(int.Parse(TextBoxTicket.Text));
-            
+
             passenger.Tickets.Add(ticket);
 
             context.SaveChanges();
